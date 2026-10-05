@@ -19,7 +19,7 @@ class WebSocketManager {
     // الحصول على base URL
     const apiURL = process.env.NEXT_PUBLIC_API_URL 
       ? process.env.NEXT_PUBLIC_API_URL
-      : 'https://medismile1-production.up.railway.app/api';
+      : 'https://api.medismile.xn--mgbaab0cxheq.tech/api';
     
     // تحويل HTTP/HTTPS إلى WS/WSS
     let wsURL = apiURL.replace(/^https?/, apiURL.startsWith('https') ? 'wss' : 'ws');

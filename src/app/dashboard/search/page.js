@@ -165,7 +165,7 @@ export default function SearchPage() {
     
     return parts.map((part, index) => 
       part.isMatch ? (
-        <mark key={index} className="bg-yellow-200 font-semibold text-dark px-0.5 rounded">
+        <mark key={index} className="bg-warning-200 font-semibold text-text px-0.5 rounded">
           {part.text}
         </mark>
       ) : (
@@ -237,18 +237,18 @@ export default function SearchPage() {
       <button
         key={item.id || Math.random()}
         onClick={handleItemClick}
-        className="w-full text-right p-4 rounded-lg border border-sky-200 hover:bg-sky-50 hover:border-sky-300 transition-all group"
+        className="w-full text-right p-4 rounded-lg border border-border-strong hover:bg-primary-muted hover:border-border-hover transition-all group"
       >
         <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 p-2 rounded-lg bg-sky-100 group-hover:bg-sky-200 transition-colors">
-            <Icon className="h-5 w-5 text-sky-600" />
+          <div className="flex-shrink-0 p-2 rounded-lg bg-tint group-hover:bg-tint-strong transition-colors">
+            <Icon className="h-5 w-5 text-link" />
           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-sm font-semibold text-dark mb-1 line-clamp-1" style={{ fontFamily: 'inherit' }}>
+                            <h3 className="text-sm font-semibold text-text mb-1 line-clamp-1" style={{ fontFamily: 'inherit' }}>
                               {renderHighlightedText(getTitle(), 80)}
                             </h3>
                             {getSubtitle() && (
-                              <p className="text-xs text-dark-lighter line-clamp-2" style={{ fontFamily: 'inherit' }}>
+                              <p className="text-xs text-text-secondary line-clamp-2" style={{ fontFamily: 'inherit' }}>
                                 {renderHighlightedText(getSubtitle(), 100)}
                               </p>
                             )}
@@ -262,20 +262,20 @@ export default function SearchPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+        <h1 className="text-2xl sm:text-3xl font-bold text-text mb-2" style={{ fontFamily: 'inherit' }}>
           البحث
         </h1>
-        <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+        <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
           ابحث عن الحالات، الجلسات، المواعيد، والمزيد
         </p>
       </div>
 
       {/* Search Bar */}
-      <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+      <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <MagnifyingGlassIcon className="h-5 w-5 text-dark-lighter" />
+              <MagnifyingGlassIcon className="h-5 w-5 text-text-secondary" />
             </div>
             <input
               type="text"
@@ -284,7 +284,7 @@ export default function SearchPage() {
               onChange={(e) => {
                 setLocalQuery(e.target.value);
               }}
-              className="block w-full rounded-lg border border-sky-200 bg-sky-50 px-4 py-3.5 pr-10 pl-4 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all"
+              className="block w-full rounded-lg border border-border-strong bg-primary-muted px-4 py-3.5 pr-10 pl-4 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all"
               style={{ fontFamily: 'inherit' }}
               autoFocus
             />
@@ -292,7 +292,7 @@ export default function SearchPage() {
               <button
                 type="button"
                 onClick={handleClear}
-                className="absolute inset-y-0 left-0 flex items-center pl-3 text-dark-lighter hover:text-dark transition-colors"
+                className="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary hover:text-text transition-colors"
               >
                 <XMarkIcon className="h-5 w-5" />
               </button>
@@ -301,12 +301,12 @@ export default function SearchPage() {
           <button
             type="submit"
             disabled={loading || localQuery.trim().length < 2}
-            className="w-full rounded-lg bg-sky-400 px-4 py-3 text-sm font-semibold text-white hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-light hover:bg-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             style={{ fontFamily: 'inherit' }}
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
-                <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin h-4 w-4 text-light" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -321,8 +321,8 @@ export default function SearchPage() {
 
       {/* Recent Searches */}
       {!query && recentSearches.length > 0 && (
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
-          <h2 className="text-sm font-semibold text-dark mb-3" style={{ fontFamily: 'inherit' }}>
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
+          <h2 className="text-sm font-semibold text-text mb-3" style={{ fontFamily: 'inherit' }}>
             عمليات البحث الأخيرة
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -330,7 +330,7 @@ export default function SearchPage() {
               <button
                 key={index}
                 onClick={() => handleRecentSearchClick(recentQuery)}
-                className="px-3 py-1.5 rounded-lg bg-sky-50 text-sm text-sky-600 hover:bg-sky-100 transition-colors"
+                className="px-3 py-1.5 rounded-lg bg-primary-muted text-sm text-link hover:bg-tint-hover transition-colors"
                 style={{ fontFamily: 'inherit' }}
               >
                 {recentQuery}
@@ -345,9 +345,9 @@ export default function SearchPage() {
         <div className="space-y-6">
           {/* Results Summary */}
           {!loading && (
-            <div className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+            <div className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
               {results.total > 0 ? (
-                <>تم العثور على <span className="font-semibold text-dark">{results.total}</span> نتيجة</>
+                <>تم العثور على <span className="font-semibold text-text">{results.total}</span> نتيجة</>
               ) : (
                 'لم يتم العثور على نتائج'
               )}
@@ -360,13 +360,13 @@ export default function SearchPage() {
             if (categoryResults.length === 0) return null;
 
             return (
-              <div key={category} className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+              <div key={category} className="rounded-lg bg-surface border border-border p-5 shadow-sm">
                 <div className="flex items-center gap-2 mb-4">
                   {(() => {
                     const Icon = categoryIcons[category];
-                    return <Icon className="h-5 w-5 text-sky-600" />;
+                    return <Icon className="h-5 w-5 text-link" />;
                   })()}
-                  <h2 className="text-base font-semibold text-dark" style={{ fontFamily: 'inherit' }}>
+                  <h2 className="text-base font-semibold text-text" style={{ fontFamily: 'inherit' }}>
                     {label} ({categoryResults.length})
                   </h2>
                 </div>
@@ -376,7 +376,7 @@ export default function SearchPage() {
                 {categoryResults.length >= 10 && (
                   <Link
                     href={categoryPaths[category]()}
-                    className="block mt-4 text-center text-sm text-sky-600 hover:text-sky-700 font-medium"
+                    className="block mt-4 text-center text-sm text-link hover:text-on-tint font-medium"
                     style={{ fontFamily: 'inherit' }}
                   >
                     عرض المزيد من {label}
@@ -388,12 +388,12 @@ export default function SearchPage() {
 
           {/* No Results */}
           {!loading && results.total === 0 && (
-            <div className="rounded-lg bg-white border border-sky-100 p-12 shadow-sm text-center">
-              <MagnifyingGlassIcon className="h-12 w-12 text-dark-lighter mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+            <div className="rounded-lg bg-surface border border-border p-12 shadow-sm text-center">
+              <MagnifyingGlassIcon className="h-12 w-12 text-text-secondary mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-text mb-2" style={{ fontFamily: 'inherit' }}>
                 لا توجد نتائج
               </h3>
-              <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+              <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
                 لم نتمكن من العثور على أي نتائج لـ &quot;{query}&quot;
               </p>
             </div>
@@ -403,12 +403,12 @@ export default function SearchPage() {
 
       {/* Empty State */}
       {!query && recentSearches.length === 0 && (
-        <div className="rounded-lg bg-white border border-sky-100 p-12 shadow-sm text-center">
-          <MagnifyingGlassIcon className="h-12 w-12 text-dark-lighter mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+        <div className="rounded-lg bg-surface border border-border p-12 shadow-sm text-center">
+          <MagnifyingGlassIcon className="h-12 w-12 text-text-secondary mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-text mb-2" style={{ fontFamily: 'inherit' }}>
             ابدأ البحث
           </h3>
-          <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+          <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
             اكتب كلمة البحث في الحقل أعلاه للعثور على الحالات، الجلسات، المواعيد والمزيد
           </p>
         </div>

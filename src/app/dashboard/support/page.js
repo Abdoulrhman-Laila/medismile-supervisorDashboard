@@ -93,16 +93,16 @@ export default function SupportPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="bg-white rounded-lg border border-sky-100 shadow-sm p-6">
+      <div className="bg-surface rounded-lg border border-border shadow-sm p-6">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-lg bg-sky-50">
-            <LifebuoyIcon className="h-6 w-6 text-sky-600" />
+          <div className="p-3 rounded-lg bg-primary-muted">
+            <LifebuoyIcon className="h-6 w-6 text-link" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-dark" style={{ fontFamily: 'inherit' }}>
+            <h1 className="text-2xl font-bold text-text" style={{ fontFamily: 'inherit' }}>
               الدعم الفني
             </h1>
-            <p className="text-sm text-dark-lighter mt-1" style={{ fontFamily: 'inherit' }}>
+            <p className="text-sm text-text-secondary mt-1" style={{ fontFamily: 'inherit' }}>
               أرسل مشكلتك أو استفسارك وسنقوم بالرد عليك في أقرب وقت ممكن
             </p>
           </div>
@@ -110,11 +110,11 @@ export default function SupportPage() {
       </div>
 
       {/* Support Form */}
-      <div className="bg-white rounded-lg border border-sky-100 shadow-sm p-6">
+      <div className="bg-surface rounded-lg border border-border shadow-sm p-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Category */}
           <div>
-            <label htmlFor="category" className="block text-sm font-semibold text-dark mb-2">
+            <label htmlFor="category" className="block text-sm font-semibold text-text mb-2">
               فئة المشكلة
             </label>
             <select
@@ -122,7 +122,7 @@ export default function SupportPage() {
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition-colors"
+              className="w-full rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm text-text focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
               disabled={loading}
             >
               {categories.map((cat) => (
@@ -133,8 +133,8 @@ export default function SupportPage() {
 
           {/* Subject */}
           <div>
-            <label htmlFor="subject" className="block text-sm font-semibold text-dark mb-2">
-              عنوان المشكلة <span className="text-red-500">*</span>
+            <label htmlFor="subject" className="block text-sm font-semibold text-text mb-2">
+              عنوان المشكلة <span className="text-danger-500">*</span>
             </label>
             <input
               type="text"
@@ -143,15 +143,15 @@ export default function SupportPage() {
               value={formData.subject}
               onChange={handleChange}
               placeholder="مثال: مشكلة في رفع الملفات"
-              className="w-full rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm text-dark placeholder-dark-lighter focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition-colors"
+              className="w-full rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm text-text placeholder-text-secondary focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
               disabled={loading}
             />
           </div>
 
           {/* Description */}
           <div>
-            <label htmlFor="description" className="block text-sm font-semibold text-dark mb-2">
-              وصف المشكلة <span className="text-red-500">*</span>
+            <label htmlFor="description" className="block text-sm font-semibold text-text mb-2">
+              وصف المشكلة <span className="text-danger-500">*</span>
             </label>
             <textarea
               id="description"
@@ -160,14 +160,14 @@ export default function SupportPage() {
               onChange={handleChange}
               rows={6}
               placeholder="يرجى وصف المشكلة بالتفصيل..."
-              className="w-full rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm text-dark placeholder-dark-lighter focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition-colors resize-none"
+              className="w-full rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm text-text placeholder-text-secondary focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring transition-colors resize-none"
               disabled={loading}
             />
           </div>
 
           {/* Priority */}
           <div>
-            <label htmlFor="priority" className="block text-sm font-semibold text-dark mb-2">
+            <label htmlFor="priority" className="block text-sm font-semibold text-text mb-2">
               الأولوية
             </label>
             <select
@@ -175,7 +175,7 @@ export default function SupportPage() {
               name="priority"
               value={formData.priority}
               onChange={handleChange}
-              className="w-full rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition-colors"
+              className="w-full rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm text-text focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
               disabled={loading}
             >
               {priorities.map((p) => (
@@ -186,7 +186,7 @@ export default function SupportPage() {
 
           {/* Related App */}
           <div>
-            <label htmlFor="related_app" className="block text-sm font-semibold text-dark mb-2">
+            <label htmlFor="related_app" className="block text-sm font-semibold text-text mb-2">
               التطبيق المرتبط
             </label>
             <select
@@ -194,7 +194,7 @@ export default function SupportPage() {
               name="related_app"
               value={formData.related_app}
               onChange={handleChange}
-              className="w-full rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 transition-colors"
+              className="w-full rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm text-text focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring transition-colors"
               disabled={loading}
             >
               {apps.map((app) => (
@@ -205,37 +205,37 @@ export default function SupportPage() {
 
           {/* Success Message */}
           {success && (
-            <div className="rounded-lg bg-sky-50 border border-sky-200 p-4 flex items-start gap-3">
-              <CheckCircleIcon className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" />
+            <div className="rounded-lg bg-primary-muted border border-border-strong p-4 flex items-start gap-3">
+              <CheckCircleIcon className="h-5 w-5 text-link flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <p className="text-sm font-semibold text-sky-900">تم إرسال تذكرة الدعم بنجاح</p>
-                {ticketId && <p className="text-xs text-sky-700 mt-1">رقم التذكرة: {ticketId}</p>}
-                <p className="text-xs text-sky-700 mt-1">سيتم الرد عليك في أقرب وقت ممكن</p>
+                <p className="text-sm font-semibold text-on-tint-deep">تم إرسال تذكرة الدعم بنجاح</p>
+                {ticketId && <p className="text-xs text-on-tint mt-1">رقم التذكرة: {ticketId}</p>}
+                <p className="text-xs text-on-tint mt-1">سيتم الرد عليك في أقرب وقت ممكن</p>
               </div>
             </div>
           )}
 
           {/* Error Message */}
           {error && !success && (
-            <div className="rounded-lg bg-red-50 border border-red-200 p-4 flex items-start gap-3">
-              <XCircleIcon className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+            <div className="rounded-lg bg-danger-50 border border-danger-200 p-4 flex items-start gap-3">
+              <XCircleIcon className="h-5 w-5 text-danger-600 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <p className="text-sm font-semibold text-red-900">حدث خطأ أثناء إرسال التذكرة</p>
-                <p className="text-xs text-red-700 mt-1">{error?.detail || error?.message || 'يرجى المحاولة مرة أخرى'}</p>
+                <p className="text-sm font-semibold text-danger-900">حدث خطأ أثناء إرسال التذكرة</p>
+                <p className="text-xs text-danger-700 mt-1">{error?.detail || error?.message || 'يرجى المحاولة مرة أخرى'}</p>
               </div>
             </div>
           )}
 
           {/* Submit Button */}
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-sky-100">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center gap-2 rounded-lg bg-sky-500 px-6 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {loading ? (
                 <>
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-light border-t-transparent"></div>
                   <span>جاري الإرسال...</span>
                 </>
               ) : (

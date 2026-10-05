@@ -137,7 +137,7 @@ export default function SearchDropdown({ results, loading, query, onClose }) {
     
     return parts.map((part, index) => 
       part.isMatch ? (
-        <mark key={index} className="bg-yellow-200 font-semibold text-dark">
+        <mark key={index} className="bg-warning-200 font-semibold text-text">
           {part.text}
         </mark>
       ) : (
@@ -152,12 +152,12 @@ export default function SearchDropdown({ results, loading, query, onClose }) {
   return (
     <div
       ref={dropdownRef}
-      className="absolute top-full left-0 right-0 mt-2 bg-white border border-sky-200 rounded-lg shadow-xl z-50 max-h-96 overflow-hidden flex flex-col"
+      className="absolute top-full left-0 right-0 mt-2 bg-surface border border-border-strong rounded-lg shadow-xl z-50 max-h-96 overflow-hidden flex flex-col"
     >
       {loading ? (
         <div className="p-6 text-center">
-          <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-sky-500 border-r-transparent"></div>
-          <p className="mt-2 text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+          <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-primary border-r-transparent"></div>
+          <p className="mt-2 text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
             جاري البحث...
           </p>
         </div>
@@ -173,8 +173,8 @@ export default function SearchDropdown({ results, loading, query, onClose }) {
               return (
                 <div key={category} className="mb-3 last:mb-0">
                   <div className="flex items-center gap-2 px-3 py-2 mb-2">
-                    <Icon className="h-4 w-4 text-sky-600" />
-                    <h3 className="text-xs font-semibold text-dark-lighter uppercase" style={{ fontFamily: 'inherit' }}>
+                    <Icon className="h-4 w-4 text-link" />
+                    <h3 className="text-xs font-semibold text-text-secondary uppercase" style={{ fontFamily: 'inherit' }}>
                       {label}
                     </h3>
                   </div>
@@ -183,18 +183,18 @@ export default function SearchDropdown({ results, loading, query, onClose }) {
                       <button
                         key={item.id || Math.random()}
                         onClick={() => handleItemClick(category, item)}
-                        className="w-full text-right px-3 py-2 rounded-lg hover:bg-sky-50 transition-colors group"
+                        className="w-full text-right px-3 py-2 rounded-lg hover:bg-primary-muted transition-colors group"
                       >
                         <div className="flex items-start gap-2">
-                          <div className="flex-shrink-0 p-1 rounded bg-sky-100 group-hover:bg-sky-200 transition-colors">
-                            <Icon className="h-3 w-3 text-sky-600" />
+                          <div className="flex-shrink-0 p-1 rounded bg-tint group-hover:bg-tint-strong transition-colors">
+                            <Icon className="h-3 w-3 text-link" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-dark line-clamp-1" style={{ fontFamily: 'inherit' }}>
+                            <p className="text-sm font-medium text-text line-clamp-1" style={{ fontFamily: 'inherit' }}>
                               {renderHighlightedText(getItemTitle(item, category), 50)}
                             </p>
                             {getItemSubtitle(item, category) && (
-                              <p className="text-xs text-dark-lighter line-clamp-1 mt-0.5" style={{ fontFamily: 'inherit' }}>
+                              <p className="text-xs text-text-secondary line-clamp-1 mt-0.5" style={{ fontFamily: 'inherit' }}>
                                 {renderHighlightedText(getItemSubtitle(item, category), 50)}
                               </p>
                             )}
@@ -207,11 +207,11 @@ export default function SearchDropdown({ results, loading, query, onClose }) {
               );
             })}
           </div>
-          <div className="border-t border-sky-200 p-2">
+          <div className="border-t border-border-strong p-2">
             <Link
               href={`/dashboard/search?q=${encodeURIComponent(query)}`}
               onClick={onClose}
-              className="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-lg bg-sky-50 hover:bg-sky-100 text-sm font-medium text-sky-600 transition-colors"
+              className="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-lg bg-primary-muted hover:bg-tint-hover text-sm font-medium text-link transition-colors"
               style={{ fontFamily: 'inherit' }}
             >
               <MagnifyingGlassIcon className="h-4 w-4" />
@@ -221,8 +221,8 @@ export default function SearchDropdown({ results, loading, query, onClose }) {
         </>
       ) : (
         <div className="p-6 text-center">
-          <MagnifyingGlassIcon className="h-8 w-8 text-dark-lighter mx-auto mb-2" />
-          <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+          <MagnifyingGlassIcon className="h-8 w-8 text-text-secondary mx-auto mb-2" />
+          <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
             لا توجد نتائج لـ &quot;{query}&quot;
           </p>
         </div>

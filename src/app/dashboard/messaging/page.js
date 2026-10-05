@@ -379,27 +379,27 @@ export default function MessagingPage() {
       {/* Mobile Overlay */}
       {showThreadsList && window.innerWidth < 768 && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-dark/50 z-40 md:hidden"
           onClick={() => setShowThreadsList(false)}
         />
       )}
 
       {/* قائمة المحادثات */}
       <div
-        className={`absolute md:relative inset-y-0 right-0 w-full md:w-1/3 lg:w-1/4 border-r border-sky-100 bg-white flex flex-col z-50 md:z-auto transition-transform duration-300 ${
+        className={`absolute md:relative inset-y-0 right-0 w-full md:w-1/3 lg:w-1/4 border-r border-border bg-surface flex flex-col z-50 md:z-auto transition-transform duration-300 ${
           showThreadsList ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
         }`}
       >
         {/* Header */}
-        <div className="p-4 border-b border-sky-100">
+        <div className="p-4 border-b border-border">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-dark" style={{ fontFamily: 'inherit' }}>
+            <h2 className="text-xl font-bold text-text" style={{ fontFamily: 'inherit' }}>
               المراسلة
             </h2>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setShowThreadsList(false)}
-                className="md:hidden p-2 rounded-lg hover:bg-sky-100 text-dark-lighter"
+                className="md:hidden p-2 rounded-lg hover:bg-tint-hover text-text-secondary"
               >
                 <XMarkIcon className="h-6 w-6" />
               </button>
@@ -409,24 +409,24 @@ export default function MessagingPage() {
           {/* Search */}
           <div className="relative mb-3">
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <MagnifyingGlassIcon className="h-5 w-5 text-dark-lighter" />
+              <MagnifyingGlassIcon className="h-5 w-5 text-text-secondary" />
             </div>
             <input
               type="text"
               placeholder="ابحث عن محادثة..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 pr-10 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+              className="block w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 pr-10 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
             />
           </div>
 
           {/* Filter */}
-          <label className="flex items-center gap-2 text-sm text-dark-lighter cursor-pointer">
+          <label className="flex items-center gap-2 text-sm text-text-secondary cursor-pointer">
             <input
               type="checkbox"
               checked={showClosedThreads}
               onChange={(e) => setShowClosedThreads(e.target.checked)}
-              className="rounded border-sky-300 text-sky-600 focus:ring-sky-500"
+              className="rounded border-border-hover text-link focus:ring-primary"
             />
             <span>عرض المحادثات المغلقة</span>
           </label>
@@ -436,19 +436,19 @@ export default function MessagingPage() {
         <div className="flex-1 overflow-y-auto">
           {loading ? (
             <div className="p-8 text-center">
-              <div className="inline-block h-6 w-6 animate-spin rounded-full border-3 border-solid border-sky-500 border-r-transparent"></div>
-              <p className="mt-3 text-sm text-dark-lighter">جاري تحميل المحادثات...</p>
+              <div className="inline-block h-6 w-6 animate-spin rounded-full border-3 border-solid border-primary border-r-transparent"></div>
+              <p className="mt-3 text-sm text-text-secondary">جاري تحميل المحادثات...</p>
             </div>
           ) : filteredThreads.length === 0 ? (
             <div className="p-8 text-center">
-              <ChatBubbleLeftRightIcon className="mx-auto h-12 w-12 text-dark-lighter" />
-              <p className="mt-3 text-sm font-semibold text-dark">لا توجد محادثات</p>
-              <p className="mt-1 text-xs text-dark-lighter">
+              <ChatBubbleLeftRightIcon className="mx-auto h-12 w-12 text-text-secondary" />
+              <p className="mt-3 text-sm font-semibold text-text">لا توجد محادثات</p>
+              <p className="mt-1 text-xs text-text-secondary">
                 {searchTerm ? 'لا توجد محادثات تطابق البحث' : 'لم يتم إنشاء أي محادثات بعد'}
               </p>
             </div>
           ) : (
-            <div className="divide-y divide-sky-100">
+            <div className="divide-y divide-border">
               {filteredThreads.map((thread) => {
                 const unreadCount = getUnreadCount(thread);
                 const isSelected = selectedThreadId === thread.id;
@@ -457,15 +457,15 @@ export default function MessagingPage() {
                   <button
                     key={thread.id}
                     onClick={() => setSelectedThreadId(thread.id)}
-                    className={`w-full text-right p-4 hover:bg-sky-50 transition-colors ${
-                      isSelected ? 'bg-sky-100 border-r-2 border-sky-500' : ''
+                    className={`w-full text-right p-4 hover:bg-primary-muted transition-colors ${
+                      isSelected ? 'bg-tint border-r-2 border-primary' : ''
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1.5">
-                          <FolderIcon className="h-4 w-4 text-sky-500 shrink-0" />
-                          <p className="text-sm font-semibold text-dark truncate" style={{ fontFamily: 'inherit' }}>
+                          <FolderIcon className="h-4 w-4 text-primary shrink-0" />
+                          <p className="text-sm font-semibold text-text truncate" style={{ fontFamily: 'inherit' }}>
                             {thread.thread_type === 'case' && (thread.case_id || thread.case)
                               ? (() => {
                                   const caseId = thread.case_id || thread.case;
@@ -477,27 +477,27 @@ export default function MessagingPage() {
                         </div>
                         {thread.participant_student && (
                           <div className="flex items-center gap-2 mb-1.5">
-                            <UserIcon className="h-4 w-4 text-dark-lighter shrink-0" />
-                            <p className="text-xs text-dark-lighter truncate" style={{ fontFamily: 'inherit' }}>
+                            <UserIcon className="h-4 w-4 text-text-secondary shrink-0" />
+                            <p className="text-xs text-text-secondary truncate" style={{ fontFamily: 'inherit' }}>
                               الطالب: {thread.participant_student.first_name} {thread.participant_student.last_name}
                             </p>
                           </div>
                         )}
                         {thread.participant_patient && (
                           <div className="flex items-center gap-2 mb-1.5">
-                            <UserIcon className="h-4 w-4 text-dark-lighter shrink-0" />
-                            <p className="text-xs text-dark-lighter truncate" style={{ fontFamily: 'inherit' }}>
+                            <UserIcon className="h-4 w-4 text-text-secondary shrink-0" />
+                            <p className="text-xs text-text-secondary truncate" style={{ fontFamily: 'inherit' }}>
                               المريض: {thread.participant_patient.first_name} {thread.participant_patient.last_name}
                             </p>
                           </div>
                         )}
                         {thread.last_message && (
-                          <p className="text-xs text-dark-lighter line-clamp-2 mt-1.5 leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                          <p className="text-xs text-text-secondary line-clamp-2 mt-1.5 leading-relaxed" style={{ fontFamily: 'inherit' }}>
                             {thread.last_message.content}
                           </p>
                         )}
                         {thread.last_message && (thread.last_message.sent_at || thread.last_message.created_at) && (
-                          <p className="text-xs text-dark-lighter mt-1.5" style={{ fontFamily: 'inherit' }}>
+                          <p className="text-xs text-text-secondary mt-1.5" style={{ fontFamily: 'inherit' }}>
                             {new Date(thread.last_message.sent_at || thread.last_message.created_at).toLocaleDateString('ar-SA', {
                               month: 'short',
                               day: 'numeric',
@@ -509,12 +509,12 @@ export default function MessagingPage() {
                       </div>
                       <div className="flex flex-col items-end gap-1.5 shrink-0">
                         {thread.is_closed && (
-                          <span className="text-xs text-red-600 font-medium px-2 py-0.5 bg-red-50 rounded" style={{ fontFamily: 'inherit' }}>
+                          <span className="text-xs text-danger-600 font-medium px-2 py-0.5 bg-danger-50 rounded" style={{ fontFamily: 'inherit' }}>
                             مغلقة
                           </span>
                         )}
                         {unreadCount > 0 && (
-                          <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-sky-500 text-white text-xs font-semibold">
+                          <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-primary text-light text-xs font-semibold">
                             {unreadCount > 99 ? '99+' : unreadCount}
                           </span>
                         )}
@@ -529,23 +529,23 @@ export default function MessagingPage() {
       </div>
 
       {/* عرض المحادثة */}
-      <div className="flex-1 flex flex-col bg-white min-w-0">
+      <div className="flex-1 flex flex-col bg-surface min-w-0">
         {selectedThreadId ? (
           <>
             {/* Header المحادثة */}
-            <div className="p-4 border-b border-sky-100 bg-sky-50 shrink-0">
+            <div className="p-4 border-b border-border bg-primary-muted shrink-0">
               <div className="flex items-center gap-3 mb-3 md:mb-0">
                 <button
                   onClick={() => setShowThreadsList(true)}
-                  className="md:hidden p-2 rounded-lg hover:bg-sky-100 text-dark-lighter -mr-2"
+                  className="md:hidden p-2 rounded-lg hover:bg-tint-hover text-text-secondary -mr-2"
                 >
                   <Bars3Icon className="h-6 w-6" />
                 </button>
                 {currentThread ? (
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      <FolderIcon className="h-5 w-5 text-sky-500 shrink-0" />
-                      <h3 className="text-base sm:text-lg font-semibold text-dark truncate" style={{ fontFamily: 'inherit' }}>
+                      <FolderIcon className="h-5 w-5 text-primary shrink-0" />
+                      <h3 className="text-base sm:text-lg font-semibold text-text truncate" style={{ fontFamily: 'inherit' }}>
                         {currentThread.thread_type === 'case' && (currentThread.case_id || currentThread.case)
                           ? (() => {
                               const caseId = currentThread.case_id || currentThread.case;
@@ -555,12 +555,12 @@ export default function MessagingPage() {
                           : 'محادثة'}
                       </h3>
                       {currentThread.is_closed && (
-                        <span className="text-xs text-red-600 font-medium bg-red-50 px-2 py-1 rounded whitespace-nowrap" style={{ fontFamily: 'inherit' }}>
+                        <span className="text-xs text-danger-600 font-medium bg-danger-50 px-2 py-1 rounded whitespace-nowrap" style={{ fontFamily: 'inherit' }}>
                           مغلقة
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-dark-lighter flex-wrap">
+                    <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-text-secondary flex-wrap">
                       {currentThread.participant_student && (
                         <div className="flex items-center gap-1">
                           <UserIcon className="h-4 w-4 shrink-0" />
@@ -593,7 +593,7 @@ export default function MessagingPage() {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center flex-1 h-12">
-                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-sky-500 border-r-transparent"></div>
+                    <div className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-primary border-r-transparent"></div>
                   </div>
                 )}
               </div>
@@ -602,22 +602,22 @@ export default function MessagingPage() {
             {/* الرسائل */}
             <div
               ref={messagesContainerRef}
-              className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gradient-to-b from-gray-50 to-white"
+              className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gradient-to-b from-background to-surface"
               style={{ scrollBehavior: 'smooth' }}
             >
               {loading && messages.length === 0 ? (
                 <div className="flex items-center justify-center h-full min-h-[200px]">
                   <div className="text-center">
-                    <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-                    <p className="mt-3 text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>جاري تحميل الرسائل...</p>
+                    <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+                    <p className="mt-3 text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>جاري تحميل الرسائل...</p>
                   </div>
                 </div>
               ) : messages.length === 0 ? (
                 <div className="flex items-center justify-center h-full min-h-[200px]">
                   <div className="text-center px-4">
-                    <ChatBubbleLeftRightIcon className="mx-auto h-12 w-12 text-dark-lighter mb-3" />
-                    <p className="text-sm font-semibold text-dark mb-1" style={{ fontFamily: 'inherit' }}>لا توجد رسائل</p>
-                    <p className="text-xs text-dark-lighter" style={{ fontFamily: 'inherit' }}>ابدأ المحادثة بإرسال رسالة</p>
+                    <ChatBubbleLeftRightIcon className="mx-auto h-12 w-12 text-text-secondary mb-3" />
+                    <p className="text-sm font-semibold text-text mb-1" style={{ fontFamily: 'inherit' }}>لا توجد رسائل</p>
+                    <p className="text-xs text-text-secondary" style={{ fontFamily: 'inherit' }}>ابدأ المحادثة بإرسال رسالة</p>
                   </div>
                 </div>
               ) : (
@@ -627,12 +627,12 @@ export default function MessagingPage() {
                       <button
                         onClick={handleLoadMoreMessages}
                         disabled={loadingMore}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-sky-600 hover:text-sky-700 hover:bg-sky-50 font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm text-link hover:text-on-tint hover:bg-primary-muted font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                         style={{ fontFamily: 'inherit' }}
                       >
                         {loadingMore ? (
                           <>
-                            <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-sky-500 border-r-transparent"></div>
+                            <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-primary border-r-transparent"></div>
                             جاري التحميل...
                           </>
                         ) : (
@@ -648,7 +648,7 @@ export default function MessagingPage() {
                           shouldScrollRef.current = true;
                           scrollToBottom(true);
                         }}
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs text-white bg-sky-500 hover:bg-sky-600 font-medium shadow-lg transition-colors"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs text-light bg-primary hover:bg-primary-hover font-medium shadow-lg transition-colors"
                         style={{ fontFamily: 'inherit' }}
                       >
                         التمرير للأسفل
@@ -671,9 +671,9 @@ export default function MessagingPage() {
                       <div key={message.id}>
                         {showDateSeparator && (
                           <div className="flex items-center justify-center my-4">
-                            <div className="flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-sm rounded-full border border-sky-200">
-                              <ClockIcon className="h-3 w-3 text-dark-lighter" />
-                              <span className="text-xs text-dark-lighter font-medium" style={{ fontFamily: 'inherit' }}>
+                            <div className="flex items-center gap-2 px-3 py-1 bg-surface/80 backdrop-blur-sm rounded-full border border-border-strong">
+                              <ClockIcon className="h-3 w-3 text-text-secondary" />
+                              <span className="text-xs text-text-secondary font-medium" style={{ fontFamily: 'inherit' }}>
                                 {new Date(message.sent_at || message.created_at).toLocaleDateString('ar-SA', {
                                   year: 'numeric',
                                   month: 'long',
@@ -685,24 +685,24 @@ export default function MessagingPage() {
                         )}
                         <div className={`flex items-end gap-2 ${isFromCurrentUser ? 'flex-row-reverse' : 'flex-row'}`}>
                           {!isFromCurrentUser && (
-                            <div className="h-8 w-8 rounded-full bg-sky-100 flex items-center justify-center shrink-0 mb-1">
-                              <UserIcon className="h-5 w-5 text-sky-600" />
+                            <div className="h-8 w-8 rounded-full bg-tint flex items-center justify-center shrink-0 mb-1">
+                              <UserIcon className="h-5 w-5 text-link" />
                             </div>
                           )}
                           <div
                             className={`max-w-[75%] sm:max-w-[70%] rounded-2xl p-3 shadow-sm ${
                               isFromCurrentUser
-                                ? 'bg-sky-500 text-white rounded-tr-sm'
-                                : 'bg-white border border-sky-200 text-dark rounded-tl-sm'
+                                ? 'bg-primary text-light rounded-tr-sm'
+                                : 'bg-surface border border-border-strong text-text rounded-tl-sm'
                             }`}
                           >
                             <p className={`text-sm leading-relaxed whitespace-pre-wrap wrap-break-word ${
-                              isFromCurrentUser ? 'text-white' : 'text-dark'
+                              isFromCurrentUser ? 'text-light' : 'text-text'
                             }`} style={{ fontFamily: 'inherit' }}>
                               {message.content}
                             </p>
                             <div className={`flex items-center gap-1.5 mt-2 text-xs ${
-                              isFromCurrentUser ? 'text-sky-100' : 'text-dark-lighter'
+                              isFromCurrentUser ? 'text-sky-100' : 'text-text-secondary'
                             }`}>
                               <span style={{ fontFamily: 'inherit' }}>
                                 {new Date(message.sent_at || message.created_at).toLocaleTimeString('ar-SA', {
@@ -732,7 +732,7 @@ export default function MessagingPage() {
 
             {/* Input إرسال رسالة */}
             {currentThread && !currentThread.is_closed && (
-              <div className="p-3 sm:p-4 border-t border-sky-100 bg-white shrink-0">
+              <div className="p-3 sm:p-4 border-t border-border bg-surface shrink-0">
                 <div className="flex gap-2 sm:gap-3 items-end">
                   <textarea
                     value={messageContent}
@@ -751,24 +751,24 @@ export default function MessagingPage() {
                     placeholder="اكتب رسالتك..."
                     rows={1}
                     maxLength={2000}
-                    className="flex-1 rounded-lg border-2 border-sky-200 bg-sky-50 px-3 sm:px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none max-h-[120px]"
+                    className="flex-1 rounded-lg border-2 border-border-strong bg-primary-muted px-3 sm:px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none max-h-[120px]"
                     style={{ fontFamily: 'inherit' }}
                   />
                   <button
                     onClick={handleSendMessage}
                     disabled={!messageContent.trim() || sending}
-                    className="flex items-center justify-center gap-2 rounded-lg bg-sky-500 px-3 sm:px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30 disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+                    className="flex items-center justify-center gap-2 rounded-lg bg-primary px-3 sm:px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
                     title="إرسال (Enter)"
                   >
                     {sending ? (
-                      <div className="h-5 w-5 animate-spin rounded-full border-2 border-solid border-white border-r-transparent"></div>
+                      <div className="h-5 w-5 animate-spin rounded-full border-2 border-solid border-light border-r-transparent"></div>
                     ) : (
                       <PaperAirplaneIcon className="h-5 w-5" />
                     )}
                   </button>
                 </div>
                 {messageContent.length > 0 && (
-                  <p className="text-xs text-dark-lighter mt-2 text-left" style={{ fontFamily: 'inherit' }}>
+                  <p className="text-xs text-text-secondary mt-2 text-left" style={{ fontFamily: 'inherit' }}>
                     {messageContent.length} / 2000
                   </p>
                 )}
@@ -777,8 +777,8 @@ export default function MessagingPage() {
 
 
             {currentThread?.is_closed && (
-              <div className="p-4 border-t border-sky-100 bg-red-50 shrink-0">
-                <p className="text-sm text-red-700 text-center" style={{ fontFamily: 'inherit' }}>
+              <div className="p-4 border-t border-border bg-danger-50 shrink-0">
+                <p className="text-sm text-danger-700 text-center" style={{ fontFamily: 'inherit' }}>
                   هذه المحادثة مغلقة ولا يمكن إرسال رسائل جديدة
                 </p>
               </div>
@@ -787,17 +787,17 @@ export default function MessagingPage() {
         ) : (
           <div className="flex items-center justify-center h-full">
             <div className="text-center px-4">
-              <ChatBubbleLeftRightIcon className="mx-auto h-16 w-16 sm:h-20 sm:w-20 text-dark-lighter mb-4" />
-              <p className="text-lg sm:text-xl font-semibold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+              <ChatBubbleLeftRightIcon className="mx-auto h-16 w-16 sm:h-20 sm:w-20 text-text-secondary mb-4" />
+              <p className="text-lg sm:text-xl font-semibold text-text mb-2" style={{ fontFamily: 'inherit' }}>
                 اختر محادثة للبدء
               </p>
-              <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+              <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
                 اختر محادثة من القائمة الجانبية لعرض الرسائل
               </p>
               {threads.length === 0 && (
                 <button
                   onClick={() => setShowThreadsList(true)}
-                  className="mt-6 md:hidden inline-flex items-center gap-2 rounded-lg bg-sky-500 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-600 transition-colors"
+                  className="mt-6 md:hidden inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-light hover:bg-primary-hover transition-colors"
                   style={{ fontFamily: 'inherit' }}
                 >
                   <Bars3Icon className="h-5 w-5" />

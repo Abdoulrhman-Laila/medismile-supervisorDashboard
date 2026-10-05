@@ -71,12 +71,12 @@ npm start
 
 ## متغيرات البيئة 🔐
 
-### الإنتاج (Railway / Render)
+### الإنتاج
 
 عيّن المتغير التالي في منصة الاستضافة:
 
 ```env
-NEXT_PUBLIC_API_URL=https://medismile1-production.up.railway.app/api
+NEXT_PUBLIC_API_URL=https://api.medismile.xn--mgbaab0cxheq.tech/api
 ```
 
 ### التطوير المحلي (اختياري)
@@ -84,7 +84,7 @@ NEXT_PUBLIC_API_URL=https://medismile1-production.up.railway.app/api
 أنشئ ملف `.env.local` في جذر المشروع:
 
 ```env
-NEXT_PUBLIC_API_URL=https://medismile1-production.up.railway.app/api
+NEXT_PUBLIC_API_URL=https://api.medismile.xn--mgbaab0cxheq.tech/api
 ```
 
 ---

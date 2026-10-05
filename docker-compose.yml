@@ -1,0 +1,25 @@
+services:
+  supervisor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.medismile.xn--mgbaab0cxheq.tech/api}
+    container_name: medismile-supervisor
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+      # Build-time public URL is already baked into the client bundle.
+      # Keep it here for server-side reads / consistency.
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.medismile.xn--mgbaab0cxheq.tech/api}
+    ports:
+      # 3001 on the host so it can run beside the admin container on 3000.
+      - "${SUPERVISOR_HOST_PORT:-3001}:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 25s

@@ -466,7 +466,7 @@ export const highlightMatches = (text, query) => {
     );
     
     if (isMatch) {
-      return `<mark class="bg-yellow-200 font-semibold">${part}</mark>`;
+      return `<mark class="bg-warning-200 font-semibold">${part}</mark>`;
     }
     return part;
   }).join('');

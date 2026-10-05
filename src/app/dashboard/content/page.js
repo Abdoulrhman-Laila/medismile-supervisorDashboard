@@ -51,8 +51,8 @@ const statusLabels = {
 };
 
 const statusColors = {
-  pending: 'bg-sky-200 text-sky-800',
-  approved: 'bg-sky-500 text-white',
+  pending: 'bg-tint-strong text-on-tint-strong',
+  approved: 'bg-primary text-light',
   rejected: 'bg-dark-lighter text-light',
 };
 
@@ -270,77 +270,77 @@ export default function ContentPage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div className="mb-2">
-        <h1 className="text-2xl sm:text-3xl font-bold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+        <h1 className="text-2xl sm:text-3xl font-bold text-text mb-2" style={{ fontFamily: 'inherit' }}>
           إدارة المحتوى المجتمعي
         </h1>
-        <p className="text-sm sm:text-base text-dark-lighter leading-relaxed" style={{ fontFamily: 'inherit' }}>
+        <p className="text-sm sm:text-base text-text-secondary leading-relaxed" style={{ fontFamily: 'inherit' }}>
           مراجعة واعتماد/رفض المحتوى المعلق من منشورات طلابك ضمن جامعتك
         </p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">إجمالي المعلق</p>
-              <p className="text-2xl font-bold text-dark">{stats.total}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">إجمالي المعلق</p>
+              <p className="text-2xl font-bold text-text">{stats.total}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center">
-                <ChatBubbleLeftRightIcon className="h-6 w-6 text-sky-500" />
+              <div className="h-10 w-10 rounded-lg bg-tint flex items-center justify-center">
+                <ChatBubbleLeftRightIcon className="h-6 w-6 text-primary" />
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">منشورات</p>
-              <p className="text-2xl font-bold text-dark">{stats.posts}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">منشورات</p>
+              <p className="text-2xl font-bold text-text">{stats.posts}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center">
-                <DocumentTextIcon className="h-6 w-6 text-sky-500" />
+              <div className="h-10 w-10 rounded-lg bg-tint flex items-center justify-center">
+                <DocumentTextIcon className="h-6 w-6 text-primary" />
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">تعليقات</p>
-              <p className="text-2xl font-bold text-dark">{stats.comments}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">تعليقات</p>
+              <p className="text-2xl font-bold text-text">{stats.comments}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-200 flex items-center justify-center">
-                <ChatBubbleLeftRightIcon className="h-6 w-6 text-sky-600" />
+              <div className="h-10 w-10 rounded-lg bg-tint-strong flex items-center justify-center">
+                <ChatBubbleLeftRightIcon className="h-6 w-6 text-link" />
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">أسئلة</p>
-              <p className="text-2xl font-bold text-dark">{stats.questions}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">أسئلة</p>
+              <p className="text-2xl font-bold text-text">{stats.questions}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-300 flex items-center justify-center">
-                <ChatBubbleLeftRightIcon className="h-6 w-6 text-sky-700" />
+              <div className="h-10 w-10 rounded-lg bg-accent-soft flex items-center justify-center">
+                <ChatBubbleLeftRightIcon className="h-6 w-6 text-on-tint" />
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">وسائط</p>
-              <p className="text-2xl font-bold text-dark">{stats.media}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">وسائط</p>
+              <p className="text-2xl font-bold text-text">{stats.media}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-400 flex items-center justify-center">
-                <PhotoIcon className="h-6 w-6 text-white" />
+              <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center">
+                <PhotoIcon className="h-6 w-6 text-light" />
               </div>
             </div>
           </div>
@@ -348,16 +348,16 @@ export default function ContentPage() {
       </div>
 
       {/* Create New Post (Supervisor) */}
-      <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
-        <h2 className="text-lg font-semibold text-dark mb-3" style={{ fontFamily: 'inherit' }}>
+      <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
+        <h2 className="text-lg font-semibold text-text mb-3" style={{ fontFamily: 'inherit' }}>
           إنشاء منشور مجتمعي جديد
         </h2>
-        <p className="text-sm text-dark-lighter mb-4">
+        <p className="text-sm text-text-secondary mb-4">
           يمكنك نشر محتوى تعليمي أو نقاشات حالات لطلابك. سيظهر المحتوى في المجتمع بعد الموافقة عليه إذا كانت هناك صلاحيات مراجعة إضافية.
         </p>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="md:col-span-2">
-            <label className="block text-sm font-semibold text-dark mb-2.5">
+            <label className="block text-sm font-semibold text-text mb-2.5">
               عنوان المنشور
             </label>
             <input
@@ -365,12 +365,12 @@ export default function ContentPage() {
               value={newPost.title}
               onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
               placeholder="مثال: مناقشة حالة تسوس عميق"
-              className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+              className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-semibold text-dark mb-2.5">
-              الوصف (مطلوب) <span className="text-sky-600">*</span>
+            <label className="block text-sm font-semibold text-text mb-2.5">
+              الوصف (مطلوب) <span className="text-link">*</span>
             </label>
             <textarea
               rows={3}
@@ -378,11 +378,11 @@ export default function ContentPage() {
               onChange={(e) => setNewPost({ ...newPost, description: e.target.value })}
               placeholder="اكتب وصفاً مختصراً للمنشور..."
               required
-              className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+              className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-semibold text-dark mb-2.5">
+            <label className="block text-sm font-semibold text-text mb-2.5">
               محتوى المنشور
             </label>
             <textarea
@@ -390,17 +390,17 @@ export default function ContentPage() {
               value={newPost.content}
               onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
               placeholder="اكتب ملخصاً تعليمياً أو وصفاً للحالة..."
-              className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+              className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-dark mb-2.5">
+            <label className="block text-sm font-semibold text-text mb-2.5">
               التصنيف
             </label>
             <select
               value={newPost.category}
               onChange={(e) => setNewPost({ ...newPost, category: e.target.value })}
-              className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+              className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
             >
               <option value="general">عام</option>
               <option value="educational">تعليمي</option>
@@ -408,7 +408,7 @@ export default function ContentPage() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-dark mb-2.5">
+            <label className="block text-sm font-semibold text-text mb-2.5">
               الوسوم (Tags)
             </label>
             <input
@@ -416,31 +416,31 @@ export default function ContentPage() {
               value={newPost.tags}
               onChange={(e) => setNewPost({ ...newPost, tags: e.target.value })}
               placeholder="مثال: endodontics, caries"
-              className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+              className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
             />
           </div>
         </div>
         <div className="mt-4 flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-4">
-            <label className="inline-flex items-center gap-2 text-sm text-dark">
+            <label className="inline-flex items-center gap-2 text-sm text-text">
               <input
                 type="checkbox"
                 checked={newPost.is_public}
                 onChange={(e) =>
                   setNewPost({ ...newPost, is_public: e.target.checked })
                 }
-                className="h-4 w-4 rounded border-sky-300 text-sky-500 focus:ring-sky-400"
+                className="h-4 w-4 rounded border-border-hover text-primary focus:ring-ring"
               />
               <span>عرضه بشكل عام ضمن المجتمع</span>
             </label>
-            <label className="inline-flex items-center gap-2 text-sm text-dark">
+            <label className="inline-flex items-center gap-2 text-sm text-text">
               <input
                 type="checkbox"
                 checked={newPost.is_featured}
                 onChange={(e) =>
                   setNewPost({ ...newPost, is_featured: e.target.checked })
                 }
-                className="h-4 w-4 rounded border-sky-300 text-sky-500 focus:ring-sky-400"
+                className="h-4 w-4 rounded border-border-hover text-primary focus:ring-ring"
               />
               <span>تمييزه كمحتوى مميز</span>
             </label>
@@ -500,7 +500,7 @@ export default function ContentPage() {
                 toast.error('حدث خطأ أثناء إنشاء المنشور');
               }
             }}
-            className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-6 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+            className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary/30"
           >
             {creating ? 'جاري الإرسال...' : 'نشر المنشور'}
           </button>
@@ -508,24 +508,24 @@ export default function ContentPage() {
       </div>
 
       {/* Tabs للتبديل بين المعلق والموافق عليه */}
-      <div className="rounded-lg bg-white border border-sky-100 p-1 shadow-sm">
+      <div className="rounded-lg bg-surface border border-border p-1 shadow-sm">
         <div className="flex gap-2">
           <button
             onClick={() => setActiveTab('pending')}
-            className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20 ${
+            className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20 ${
               activeTab === 'pending'
-                ? 'bg-sky-500 text-white'
-                : 'bg-transparent text-dark hover:bg-sky-50'
+                ? 'bg-primary text-light'
+                : 'bg-transparent text-text hover:bg-primary-muted'
             }`}
           >
             معلق ({stats.total})
           </button>
           <button
             onClick={() => setActiveTab('approved')}
-            className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20 ${
+            className={`flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20 ${
               activeTab === 'approved'
-                ? 'bg-sky-500 text-white'
-                : 'bg-transparent text-dark hover:bg-sky-50'
+                ? 'bg-primary text-light'
+                : 'bg-transparent text-text hover:bg-primary-muted'
             }`}
           >
             موافق عليه ({stats.approved})
@@ -534,26 +534,26 @@ export default function ContentPage() {
       </div>
 
       {/* Search and Filters */}
-      <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+      <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* Search */}
           <div className="relative flex-1 max-w-md">
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <MagnifyingGlassIcon className="h-5 w-5 text-dark-lighter" />
+              <MagnifyingGlassIcon className="h-5 w-5 text-text-secondary" />
             </div>
             <input
               type="text"
               placeholder="ابحث عن محتوى..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 pr-10 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+              className="block w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 pr-10 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
             />
           </div>
 
           {/* Filter Toggle */}
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-2 rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-100 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+            className="flex items-center gap-2 rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm font-semibold text-text hover:bg-tint-hover hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
           >
             <FunnelIcon className="h-5 w-5" />
             فلترة
@@ -562,15 +562,15 @@ export default function ContentPage() {
 
         {/* Filters Panel */}
         {showFilters && (
-          <div className="mt-5 pt-5 grid grid-cols-1 gap-4 border-t border-sky-100 md:grid-cols-2">
+          <div className="mt-5 pt-5 grid grid-cols-1 gap-4 border-t border-border md:grid-cols-2">
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">نوع المحتوى</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">نوع المحتوى</label>
               <select
                 value={localFilters.content_type}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, content_type: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               >
                 <option value="">جميع الأنواع</option>
                 {Object.entries(contentTypeLabels).map(([value, label]) => (
@@ -582,13 +582,13 @@ export default function ContentPage() {
             </div>
             {activeTab === 'pending' && (
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">الحالة</label>
+                <label className="block text-sm font-semibold text-text mb-2.5">الحالة</label>
                 <select
                   value={localFilters.status}
                   onChange={(e) =>
                     setLocalFilters({ ...localFilters, status: e.target.value })
                   }
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                 >
                   <option value="">جميع الحالات</option>
                   {Object.entries(statusLabels).map(([value, label]) => (
@@ -604,19 +604,19 @@ export default function ContentPage() {
       </div>
 
       {/* Content List */}
-      <div className="rounded-lg bg-white border border-sky-100 overflow-hidden shadow-sm">
+      <div className="rounded-lg bg-surface border border-border overflow-hidden shadow-sm">
         {loading ? (
           <div className="p-12 text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-            <p className="mt-4 text-base font-semibold text-dark-lighter leading-relaxed">جاري تحميل المحتوى...</p>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+            <p className="mt-4 text-base font-semibold text-text-secondary leading-relaxed">جاري تحميل المحتوى...</p>
           </div>
         ) : filteredContent.length === 0 ? (
           <div className="p-12 text-center">
-            <ChatBubbleLeftRightIcon className="mx-auto h-12 w-12 text-dark-lighter" />
-            <p className="mt-4 text-base font-semibold text-dark leading-relaxed">
+            <ChatBubbleLeftRightIcon className="mx-auto h-12 w-12 text-text-secondary" />
+            <p className="mt-4 text-base font-semibold text-text leading-relaxed">
               {activeTab === 'pending' ? 'لا يوجد محتوى معلق' : 'لا يوجد محتوى موافق عليه'}
             </p>
-            <p className="mt-2 text-sm text-dark-lighter leading-relaxed">
+            <p className="mt-2 text-sm text-text-secondary leading-relaxed">
               {searchTerm || localFilters.content_type || localFilters.status !== 'pending'
                 ? 'لا يوجد محتوى يطابق معايير البحث'
                 : activeTab === 'pending' 
@@ -625,7 +625,7 @@ export default function ContentPage() {
             </p>
           </div>
         ) : (
-          <div className={activeTab === 'approved' ? 'space-y-6' : 'divide-y divide-sky-100'}>
+          <div className={activeTab === 'approved' ? 'space-y-6' : 'divide-y divide-border'}>
             {filteredContent.map((content) => {
               const ContentIcon = contentTypeIcons[content.content_type] || DocumentTextIcon;
               
@@ -640,7 +640,7 @@ export default function ContentPage() {
                 if (content.file) {
                   const baseUrl = process.env.NEXT_PUBLIC_API_URL 
                     ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '')
-                    : 'https://medismile1-production.up.railway.app';
+                    : 'https://api.medismile.xn--mgbaab0cxheq.tech';
                   return content.file.startsWith('http') 
                     ? content.file 
                     : `${baseUrl}${content.file}`;
@@ -657,27 +657,27 @@ export default function ContentPage() {
               // تصميم خاص للمنشورات الموافق عليها (شكل Facebook/Instagram)
               if (activeTab === 'approved' && content.status === 'approved') {
                 return (
-                  <div key={content.id} className="rounded-lg bg-white border border-sky-200 shadow-sm overflow-hidden">
+                  <div key={content.id} className="rounded-lg bg-surface border border-border-strong shadow-sm overflow-hidden">
                     {/* Post Header */}
                     <div className="p-4 pb-3">
                       <div className="flex items-center gap-3">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sky-400 flex items-center justify-center text-white font-semibold text-sm">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-light font-semibold text-sm">
                           {(content.author_name?.[0] || content.author?.first_name?.[0] || 'U').toUpperCase()}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <h3 className="text-sm font-semibold text-dark" style={{ fontFamily: 'inherit' }}>
+                            <h3 className="text-sm font-semibold text-text" style={{ fontFamily: 'inherit' }}>
                               {content.author_name || `${content.author?.first_name || ''} ${content.author?.last_name || ''}`.trim() || 'مستخدم'}
                             </h3>
                             {content.university_name && (
                               <>
-                                <span className="text-xs text-dark-lighter">•</span>
-                                <span className="text-xs text-dark-lighter">{content.university_name}</span>
+                                <span className="text-xs text-text-secondary">•</span>
+                                <span className="text-xs text-text-secondary">{content.university_name}</span>
                               </>
                             )}
                           </div>
                           {content.created_at && (
-                            <p className="text-xs text-dark-lighter mt-0.5">
+                            <p className="text-xs text-text-secondary mt-0.5">
                               {new Date(content.created_at).toLocaleDateString('ar-SA', {
                                 year: 'numeric',
                                 month: 'long',
@@ -694,7 +694,7 @@ export default function ContentPage() {
                     {/* Post Content */}
                     {content.title && (
                       <div className="px-4 pb-2">
-                        <h4 className="text-base font-bold text-dark" style={{ fontFamily: 'inherit' }}>
+                        <h4 className="text-base font-bold text-text" style={{ fontFamily: 'inherit' }}>
                           {content.title}
                         </h4>
                       </div>
@@ -702,7 +702,7 @@ export default function ContentPage() {
                     
                     {(content.content || content.description) && (
                       <div className="px-4 pb-3">
-                        <p className="text-sm text-dark whitespace-pre-wrap leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                        <p className="text-sm text-text whitespace-pre-wrap leading-relaxed" style={{ fontFamily: 'inherit' }}>
                           {content.content || content.description}
                         </p>
                       </div>
@@ -710,7 +710,7 @@ export default function ContentPage() {
 
                     {/* Post Image - عرض الصورة بشكل كبير */}
                     {hasImage && (
-                      <div className="w-full bg-sky-50">
+                      <div className="w-full bg-primary-muted">
                         <img
                           src={imageUrl}
                           alt={content.title || 'صورة المنشور'}
@@ -727,7 +727,7 @@ export default function ContentPage() {
                     {content.file && !hasImage && content.file.match(/\.(mp4|webm|ogg)$/i) && (
                       <div className="w-full bg-sky-900">
                         <video
-                          src={content.file.startsWith('http') ? content.file : `${process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'https://medismile1-production.up.railway.app'}${content.file}`}
+                          src={content.file.startsWith('http') ? content.file : `${process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'https://api.medismile.xn--mgbaab0cxheq.tech'}${content.file}`}
                           controls
                           className="w-full h-auto"
                           style={{ maxHeight: '600px' }}
@@ -738,14 +738,14 @@ export default function ContentPage() {
                     )}
 
                     {/* Post Actions - الإعجابات والتعليقات */}
-                    <div className="px-4 py-3 border-t border-sky-100">
+                    <div className="px-4 py-3 border-t border-border">
                       <div className="flex items-center gap-4">
                         <button
                           onClick={() => handleReactToPost(content.id)}
-                          className="flex items-center gap-2 text-dark hover:text-sky-600 transition-colors"
+                          className="flex items-center gap-2 text-text hover:text-link transition-colors"
                         >
                           {content.liked ? (
-                            <HeartIconSolid className="h-6 w-6 text-red-500" />
+                            <HeartIconSolid className="h-6 w-6 text-danger-500" />
                           ) : (
                             <HeartIcon className="h-6 w-6" />
                           )}
@@ -764,7 +764,7 @@ export default function ContentPage() {
                               }
                             }
                           }}
-                          className="flex items-center gap-2 text-dark hover:text-sky-600 transition-colors"
+                          className="flex items-center gap-2 text-text hover:text-link transition-colors"
                         >
                           <ChatBubbleLeftRightIcon className="h-6 w-6" />
                           <span className="text-sm font-medium">{content.comments_count || content.comments?.length || 0}</span>
@@ -774,7 +774,7 @@ export default function ContentPage() {
 
                     {/* Comments Section */}
                     {selectedPostForComment === content.id && (
-                      <div className="px-4 pb-4 border-t border-sky-100 bg-sky-50/50">
+                      <div className="px-4 pb-4 border-t border-border bg-primary-muted/50">
                         {/* Add Comment Form */}
                         <div className="pt-3 mb-3">
                           <textarea
@@ -782,13 +782,13 @@ export default function ContentPage() {
                             onChange={(e) => setCommentText(e.target.value)}
                             rows={2}
                             placeholder="أضف تعليقاً..."
-                            className="w-full rounded-lg border border-sky-200 bg-white px-3 py-2 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all resize-none mb-2"
+                            className="w-full rounded-lg border border-border-strong bg-surface px-3 py-2 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all resize-none mb-2"
                             style={{ fontFamily: 'inherit' }}
                           />
                           <div className="flex gap-2">
                             <button
                               onClick={() => handleAddComment(content.id)}
-                              className="flex-1 rounded-lg bg-sky-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors"
+                              className="flex-1 rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors"
                               style={{ fontFamily: 'inherit' }}
                             >
                               إرسال
@@ -798,7 +798,7 @@ export default function ContentPage() {
                                 setSelectedPostForComment(null);
                                 setCommentText('');
                               }}
-                              className="rounded-lg border border-sky-200 bg-white px-3 py-1.5 text-sm font-semibold text-dark hover:bg-sky-50 transition-colors"
+                              className="rounded-lg border border-border-strong bg-surface px-3 py-1.5 text-sm font-semibold text-text hover:bg-primary-muted transition-colors"
                               style={{ fontFamily: 'inherit' }}
                             >
                               إلغاء
@@ -808,20 +808,20 @@ export default function ContentPage() {
 
                         {/* Comments List */}
                         {content.comments && content.comments.length > 0 && (
-                          <div className="space-y-3 pt-3 border-t border-sky-200">
+                          <div className="space-y-3 pt-3 border-t border-border-strong">
                             {content.comments.map((comment) => (
                               <div key={comment.id} className="flex gap-3">
-                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-300 flex items-center justify-center text-white text-xs font-semibold">
+                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent-soft flex items-center justify-center text-light text-xs font-semibold">
                                   {(comment.author_name?.[0] || comment.author?.first_name?.[0] || 'U').toUpperCase()}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="bg-white rounded-lg p-3 border border-sky-200">
+                                  <div className="bg-surface rounded-lg p-3 border border-border-strong">
                                     <div className="flex items-center gap-2 mb-1">
-                                      <p className="text-sm font-semibold text-dark" style={{ fontFamily: 'inherit' }}>
+                                      <p className="text-sm font-semibold text-text" style={{ fontFamily: 'inherit' }}>
                                         {comment.author_name || comment.author?.first_name || comment.author?.username || 'مستخدم'}
                                       </p>
                                       {comment.created_at && (
-                                        <span className="text-xs text-dark-lighter">
+                                        <span className="text-xs text-text-secondary">
                                           {new Date(comment.created_at).toLocaleDateString('ar-SA', {
                                             month: 'short',
                                             day: 'numeric',
@@ -831,7 +831,7 @@ export default function ContentPage() {
                                         </span>
                                       )}
                                     </div>
-                                    <p className="text-sm text-dark leading-relaxed whitespace-pre-wrap" style={{ fontFamily: 'inherit' }}>
+                                    <p className="text-sm text-text leading-relaxed whitespace-pre-wrap" style={{ fontFamily: 'inherit' }}>
                                       {comment.text || comment.content || 'لا يوجد نص'}
                                     </p>
                                   </div>
@@ -842,7 +842,7 @@ export default function ContentPage() {
                         )}
                         {(!content.comments || content.comments.length === 0) && (
                           <div className="pt-3 text-center">
-                            <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>لا توجد تعليقات بعد</p>
+                            <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>لا توجد تعليقات بعد</p>
                           </div>
                         )}
                       </div>
@@ -853,12 +853,12 @@ export default function ContentPage() {
 
               // التصميم الأصلي للمحتوى المعلق
               return (
-                <div key={content.id} className="p-5 sm:p-6 hover:bg-sky-50 transition-colors">
+                <div key={content.id} className="p-5 sm:p-6 hover:bg-primary-muted transition-colors">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-3 flex-wrap">
-                        <ContentIcon className="h-5 w-5 text-sky-500 flex-shrink-0" />
-                        <h3 className="text-lg font-semibold text-dark leading-relaxed">
+                        <ContentIcon className="h-5 w-5 text-primary flex-shrink-0" />
+                        <h3 className="text-lg font-semibold text-text leading-relaxed">
                           {content.title || contentTypeLabels[content.content_type] || 'محتوى'}
                         </h3>
                         <span
@@ -868,13 +868,13 @@ export default function ContentPage() {
                         >
                           {statusLabels[content.status] || content.status}
                         </span>
-                        <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-700 whitespace-nowrap">
+                        <span className="rounded-full bg-tint px-3 py-1 text-xs font-medium text-on-tint whitespace-nowrap">
                           {contentTypeLabels[content.content_type] || content.content_type}
                         </span>
                       </div>
 
                       <div className="mb-4">
-                        <p className="text-sm text-dark whitespace-pre-wrap line-clamp-4 leading-relaxed">
+                        <p className="text-sm text-text whitespace-pre-wrap line-clamp-4 leading-relaxed">
                           {content.content || content.description || content.body || 'لا يوجد محتوى'}
                         </p>
                       </div>
@@ -884,7 +884,7 @@ export default function ContentPage() {
                           {(() => {
                             const baseUrl = process.env.NEXT_PUBLIC_API_URL 
                               ? process.env.NEXT_PUBLIC_API_URL.replace('/api', '')
-                              : 'https://medismile1-production.up.railway.app';
+                              : 'https://api.medismile.xn--mgbaab0cxheq.tech';
                             const fileUrl = content.file.startsWith('http') 
                               ? content.file 
                               : `${baseUrl}${content.file}`;
@@ -894,7 +894,7 @@ export default function ContentPage() {
                                 <video
                                   src={fileUrl}
                                   controls
-                                  className="max-w-md rounded-lg border-2 border-sky-200"
+                                  className="max-w-md rounded-lg border-2 border-border-strong"
                                 >
                                   متصفحك لا يدعم تشغيل الفيديو
                                 </video>
@@ -905,7 +905,7 @@ export default function ContentPage() {
                                   href={fileUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-sky-600 hover:text-sky-700 text-sm font-semibold transition-colors"
+                                  className="text-link hover:text-on-tint text-sm font-semibold transition-colors"
                                 >
                                   عرض الملف المرفق
                                 </a>
@@ -921,13 +921,13 @@ export default function ContentPage() {
                             <img
                               src={content.media_url}
                               alt="محتوى وسائط"
-                              className="max-w-md rounded-lg border-2 border-sky-200"
+                              className="max-w-md rounded-lg border-2 border-border-strong"
                             />
                           ) : content.media_type?.startsWith('video') ? (
                             <video
                               src={content.media_url}
                               controls
-                              className="max-w-md rounded-lg border-2 border-sky-200"
+                              className="max-w-md rounded-lg border-2 border-border-strong"
                             >
                               متصفحك لا يدعم تشغيل الفيديو
                             </video>
@@ -936,7 +936,7 @@ export default function ContentPage() {
                               href={content.media_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-sky-600 hover:text-sky-700 text-sm font-semibold transition-colors"
+                              className="text-link hover:text-on-tint text-sm font-semibold transition-colors"
                             >
                               عرض الملف المرفق
                             </a>
@@ -944,16 +944,16 @@ export default function ContentPage() {
                         </div>
                       )}
 
-                      <div className="flex items-center gap-4 text-xs text-dark-lighter mt-4 flex-wrap">
+                      <div className="flex items-center gap-4 text-xs text-text-secondary mt-4 flex-wrap">
                         {content.author_name && (
                           <div className="flex items-center gap-2">
-                            <UserIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                            <UserIcon className="h-4 w-4 text-primary flex-shrink-0" />
                             <span>{content.author_name}</span>
                           </div>
                         )}
                         {!content.author_name && content.author && (
                           <div className="flex items-center gap-2">
-                            <UserIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                            <UserIcon className="h-4 w-4 text-primary flex-shrink-0" />
                             <span>
                               {content.author?.first_name} {content.author?.last_name}
                               {content.author?.username && ` (${content.author.username})`}
@@ -962,13 +962,13 @@ export default function ContentPage() {
                         )}
                         {content.university_name && (
                           <div className="flex items-center gap-2">
-                            <DocumentTextIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                            <DocumentTextIcon className="h-4 w-4 text-primary flex-shrink-0" />
                             <span>{content.university_name}</span>
                           </div>
                         )}
                         {content.created_at && (
                           <div className="flex items-center gap-2">
-                            <ClockIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                            <ClockIcon className="h-4 w-4 text-primary flex-shrink-0" />
                             <span>
                               {new Date(content.created_at).toLocaleDateString('ar-SA', {
                                 year: 'numeric',
@@ -982,31 +982,31 @@ export default function ContentPage() {
                         )}
                         {content.approved_by_name && (
                           <div className="flex items-center gap-2">
-                            <CheckCircleIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                            <CheckCircleIcon className="h-4 w-4 text-primary flex-shrink-0" />
                             <span>موافق عليه من: {content.approved_by_name}</span>
                           </div>
                         )}
                       </div>
 
                       {content.rejection_reason && (
-                        <div className="mt-4 p-4 rounded-lg bg-sky-50 border-2 border-sky-200">
-                          <p className="text-xs font-semibold text-sky-800 mb-1">سبب الرفض:</p>
-                          <p className="text-sm text-sky-900 leading-relaxed">{content.rejection_reason}</p>
+                        <div className="mt-4 p-4 rounded-lg bg-primary-muted border-2 border-border-strong">
+                          <p className="text-xs font-semibold text-on-tint-strong mb-1">سبب الرفض:</p>
+                          <p className="text-sm text-on-tint-deep leading-relaxed">{content.rejection_reason}</p>
                         </div>
                       )}
 
                       {/* قسم الإعجابات والتعليقات - فقط للمنشورات الموافق عليها */}
                       {content.status === 'approved' && (
-                        <div className="mt-4 pt-4 border-t border-sky-100">
+                        <div className="mt-4 pt-4 border-t border-border">
                           <div className="flex items-center gap-4 mb-3">
                             <button
                               onClick={() => handleReactToPost(content.id)}
-                              className="flex items-center gap-2 rounded-lg border-2 border-sky-200 bg-white px-3 py-1.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                              className="flex items-center gap-2 rounded-lg border-2 border-border-strong bg-surface px-3 py-1.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
                             >
                               {content.liked ? (
-                                <HeartIconSolid className="h-5 w-5 text-red-500" />
+                                <HeartIconSolid className="h-5 w-5 text-danger-500" />
                               ) : (
-                                <HeartIcon className="h-5 w-5 text-dark-lighter" />
+                                <HeartIcon className="h-5 w-5 text-text-secondary" />
                               )}
                               <span>{content.likes_count || 0}</span>
                             </button>
@@ -1024,27 +1024,27 @@ export default function ContentPage() {
                                   }
                                 }
                               }}
-                              className="flex items-center gap-2 rounded-lg border-2 border-sky-200 bg-white px-3 py-1.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                              className="flex items-center gap-2 rounded-lg border-2 border-border-strong bg-surface px-3 py-1.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
                             >
-                              <ChatBubbleLeftRightIcon className="h-5 w-5 text-dark-lighter" />
+                              <ChatBubbleLeftRightIcon className="h-5 w-5 text-text-secondary" />
                               <span>{content.comments_count || content.comments?.length || 0}</span>
                             </button>
                           </div>
 
                           {/* نموذج إضافة تعليق */}
                           {selectedPostForComment === content.id && (
-                            <div className="mb-3 p-3 rounded-lg bg-sky-50 border-2 border-sky-200">
+                            <div className="mb-3 p-3 rounded-lg bg-primary-muted border-2 border-border-strong">
                               <textarea
                                 value={commentText}
                                 onChange={(e) => setCommentText(e.target.value)}
                                 rows={3}
                                 placeholder="أضف تعليقاً..."
-                                className="w-full rounded-lg border-2 border-sky-200 bg-white px-3 py-2 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none mb-2"
+                                className="w-full rounded-lg border-2 border-border-strong bg-surface px-3 py-2 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none mb-2"
                               />
                               <div className="flex gap-2">
                                 <button
                                   onClick={() => handleAddComment(content.id)}
-                                  className="flex-1 rounded-lg bg-sky-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+                                  className="flex-1 rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
                                 >
                                   إرسال
                                 </button>
@@ -1053,7 +1053,7 @@ export default function ContentPage() {
                                     setSelectedPostForComment(null);
                                     setCommentText('');
                                   }}
-                                  className="rounded-lg border-2 border-sky-200 bg-white px-3 py-1.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                                  className="rounded-lg border-2 border-border-strong bg-surface px-3 py-1.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
                                 >
                                   إلغاء
                                 </button>
@@ -1066,17 +1066,17 @@ export default function ContentPage() {
                             <>
                               {content.comments && content.comments.length > 0 ? (
                                 <div className="space-y-2 mt-3">
-                                  <p className="text-sm font-semibold text-dark mb-2">التعليقات ({content.comments.length})</p>
+                                  <p className="text-sm font-semibold text-text mb-2">التعليقات ({content.comments.length})</p>
                                   {content.comments.map((comment) => (
-                                    <div key={comment.id} className="p-3 rounded-lg bg-white border-2 border-sky-100">
+                                    <div key={comment.id} className="p-3 rounded-lg bg-surface border-2 border-border">
                                       <div className="flex items-start gap-2">
                                         <div className="flex-1">
                                           <div className="flex items-center gap-2 mb-1">
-                                            <p className="text-sm font-semibold text-dark">
+                                            <p className="text-sm font-semibold text-text">
                                               {comment.author_name || comment.author?.first_name || comment.author?.username || 'مستخدم'}
                                             </p>
                                             {comment.created_at && (
-                                              <p className="text-xs text-dark-lighter">
+                                              <p className="text-xs text-text-secondary">
                                                 {new Date(comment.created_at).toLocaleDateString('ar-SA', {
                                                   year: 'numeric',
                                                   month: 'short',
@@ -1087,7 +1087,7 @@ export default function ContentPage() {
                                               </p>
                                             )}
                                           </div>
-                                          <p className="text-sm text-dark-lighter leading-relaxed whitespace-pre-wrap">
+                                          <p className="text-sm text-text-secondary leading-relaxed whitespace-pre-wrap">
                                             {comment.text || comment.content || 'لا يوجد نص'}
                                           </p>
                                         </div>
@@ -1096,8 +1096,8 @@ export default function ContentPage() {
                                   ))}
                                 </div>
                               ) : (
-                                <div className="mt-3 p-4 rounded-lg bg-sky-50 border-2 border-sky-200 text-center">
-                                  <p className="text-sm text-dark-lighter">لا توجد تعليقات بعد</p>
+                                <div className="mt-3 p-4 rounded-lg bg-primary-muted border-2 border-border-strong text-center">
+                                  <p className="text-sm text-text-secondary">لا توجد تعليقات بعد</p>
                                 </div>
                               )}
                             </>
@@ -1111,7 +1111,7 @@ export default function ContentPage() {
                       <div className="flex flex-col gap-2 flex-shrink-0">
                         <button
                           onClick={() => handleApproveContent(content.id)}
-                          className="flex items-center gap-2 rounded-lg bg-sky-500 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+                          className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
                         >
                           <CheckCircleIcon className="h-5 w-5" />
                           موافقة
@@ -1122,7 +1122,7 @@ export default function ContentPage() {
                             setRejectionReason('');
                             setShowRejectModal(true);
                           }}
-                          className="flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500/30"
+                          className="flex items-center gap-2 rounded-lg bg-danger-500 px-4 py-2 text-sm font-semibold text-light hover:bg-danger-600 transition-colors focus:outline-none focus:ring-2 focus:ring-danger-500/30"
                         >
                           <XCircleIcon className="h-5 w-5" />
                           رفض
@@ -1140,28 +1140,28 @@ export default function ContentPage() {
       {/* Reject Modal */}
       {showRejectModal && selectedContent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>رفض المحتوى</h3>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>رفض المحتوى</h3>
 
             {/* Content Preview */}
-            <div className="mb-5 p-4 rounded-lg bg-sky-50 border-2 border-sky-200">
-              <p className="text-sm font-semibold text-dark mb-2">المحتوى:</p>
-              <p className="text-sm text-dark whitespace-pre-wrap line-clamp-5 leading-relaxed">
+            <div className="mb-5 p-4 rounded-lg bg-primary-muted border-2 border-border-strong">
+              <p className="text-sm font-semibold text-text mb-2">المحتوى:</p>
+              <p className="text-sm text-text whitespace-pre-wrap line-clamp-5 leading-relaxed">
                 {selectedContent.description || selectedContent.content || selectedContent.body || 'لا يوجد محتوى'}
               </p>
             </div>
 
             {/* Rejection Reason */}
             <div className="mb-5">
-              <label className="block text-sm font-semibold text-dark mb-2.5">
-                سبب الرفض <span className="text-sky-600">*</span>
+              <label className="block text-sm font-semibold text-text mb-2.5">
+                سبب الرفض <span className="text-link">*</span>
               </label>
               <textarea
                 value={rejectionReason}
                 onChange={(e) => setRejectionReason(e.target.value)}
                 rows={5}
                 required
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                 placeholder="يرجى توضيح سبب رفض هذا المحتوى..."
               />
             </div>
@@ -1171,7 +1171,7 @@ export default function ContentPage() {
               <button
                 onClick={handleRejectContent}
                 disabled={!rejectionReason.trim()}
-                className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-red-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-red-500/30"
+                className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-danger-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-danger-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-danger-500/30"
               >
                 <XCircleIcon className="h-5 w-5" />
                 رفض
@@ -1182,7 +1182,7 @@ export default function ContentPage() {
                   setSelectedContent(null);
                   setRejectionReason('');
                 }}
-                className="flex-1 rounded-lg border-2 border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="flex-1 rounded-lg border-2 border-border-strong bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
               >
                 إلغاء
               </button>

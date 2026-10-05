@@ -19,7 +19,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}`,
+          }}
+        />
+      </head>
       <body
         className={`${tajawal.variable} font-sans antialiased`}
       >

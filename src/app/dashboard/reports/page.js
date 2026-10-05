@@ -43,11 +43,11 @@ const statusLabels = {
 };
 
 const statusColors = {
-  draft: 'bg-sky-50 text-sky-700',
-  submitted: 'bg-yellow-100 text-yellow-800',
-  approved: 'bg-green-100 text-green-800',
-  rejected: 'bg-red-100 text-red-800',
-  locked: 'bg-sky-500 text-white',
+  draft: 'bg-primary-muted text-on-tint',
+  submitted: 'bg-warning-100 text-warning-800',
+  approved: 'bg-success-100 text-success-800',
+  rejected: 'bg-danger-100 text-danger-800',
+  locked: 'bg-primary text-light',
 };
 
 export default function ReportsPage() {
@@ -416,10 +416,10 @@ export default function ReportsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+          <h1 className="text-2xl sm:text-3xl font-bold text-text mb-2" style={{ fontFamily: 'inherit' }}>
             التقارير
           </h1>
-          <p className="text-sm sm:text-base text-dark-lighter leading-relaxed" style={{ fontFamily: 'inherit' }}>
+          <p className="text-sm sm:text-base text-text-secondary leading-relaxed" style={{ fontFamily: 'inherit' }}>
             عرض ومراجعة تقارير الحالات المشرف عليها
           </p>
         </div>
@@ -435,7 +435,7 @@ export default function ReportsPage() {
             });
             setShowCreateModal(true);
           }}
-          className="flex items-center gap-2.5 rounded-lg bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+          className="flex items-center gap-2.5 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
         >
           <PlusIcon className="h-5 w-5" />
           تقرير جديد
@@ -443,26 +443,26 @@ export default function ReportsPage() {
       </div>
 
       {/* Search and Filters */}
-      <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+      <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* Search */}
           <div className="relative flex-1 max-w-md">
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <MagnifyingGlassIcon className="h-5 w-5 text-dark-lighter" />
+              <MagnifyingGlassIcon className="h-5 w-5 text-text-secondary" />
             </div>
             <input
               type="text"
               placeholder="ابحث عن تقرير..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 pr-10 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+              className="block w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 pr-10 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
             />
           </div>
 
           {/* Filter Toggle */}
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-2 rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-100 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+            className="flex items-center gap-2 rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm font-semibold text-text hover:bg-tint-hover hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
           >
             <FunnelIcon className="h-5 w-5" />
             فلترة
@@ -471,15 +471,15 @@ export default function ReportsPage() {
 
         {/* Filters Panel */}
         {showFilters && (
-          <div className="mt-5 pt-5 grid grid-cols-1 gap-4 border-t border-sky-100 md:grid-cols-4">
+          <div className="mt-5 pt-5 grid grid-cols-1 gap-4 border-t border-border md:grid-cols-4">
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">نوع التقرير</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">نوع التقرير</label>
               <select
                 value={localFilters.report_type}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, report_type: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               >
                 <option value="">جميع الأنواع</option>
                 {Object.entries(reportTypeLabels).map(([value, label]) => (
@@ -490,13 +490,13 @@ export default function ReportsPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">الحالة</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">الحالة</label>
               <select
                 value={localFilters.status}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, status: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               >
                 <option value="">جميع الحالات</option>
                 {Object.entries(statusLabels).map(([value, label]) => (
@@ -507,25 +507,25 @@ export default function ReportsPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">من تاريخ</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">من تاريخ</label>
               <input
                 type="date"
                 value={localFilters.date_from}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, date_from: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">إلى تاريخ</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">إلى تاريخ</label>
               <input
                 type="date"
                 value={localFilters.date_to}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, date_to: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               />
             </div>
           </div>
@@ -533,30 +533,30 @@ export default function ReportsPage() {
       </div>
 
       {/* Reports List */}
-      <div className="rounded-lg bg-white border border-sky-100 overflow-hidden shadow-sm">
+      <div className="rounded-lg bg-surface border border-border overflow-hidden shadow-sm">
         {loading ? (
           <div className="p-12 text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-            <p className="mt-4 text-base font-semibold text-dark-lighter leading-relaxed">جاري تحميل التقارير...</p>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+            <p className="mt-4 text-base font-semibold text-text-secondary leading-relaxed">جاري تحميل التقارير...</p>
           </div>
         ) : filteredReports.length === 0 ? (
           <div className="p-12 text-center">
-            <ChartBarIcon className="mx-auto h-12 w-12 text-dark-lighter" />
-            <p className="mt-4 text-base font-semibold text-dark leading-relaxed">لا توجد تقارير</p>
-            <p className="mt-2 text-sm text-dark-lighter leading-relaxed">
+            <ChartBarIcon className="mx-auto h-12 w-12 text-text-secondary" />
+            <p className="mt-4 text-base font-semibold text-text leading-relaxed">لا توجد تقارير</p>
+            <p className="mt-2 text-sm text-text-secondary leading-relaxed">
               {searchTerm || localFilters.report_type || localFilters.status
                 ? 'لا توجد تقارير تطابق معايير البحث'
                 : 'لم يتم إنشاء أي تقارير بعد'}
             </p>
           </div>
         ) : (
-          <div className="divide-y divide-sky-100">
+          <div className="divide-y divide-border">
             {filteredReports.map((report) => (
-              <div key={report.id} className="p-5 sm:p-6 hover:bg-sky-50 transition-colors">
+              <div key={report.id} className="p-5 sm:p-6 hover:bg-primary-muted transition-colors">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-3 flex-wrap">
-                      <h3 className="text-lg font-semibold text-dark leading-relaxed">
+                      <h3 className="text-lg font-semibold text-text leading-relaxed">
                         {report.title || 'تقرير بدون عنوان'}
                       </h3>
                       <span
@@ -566,13 +566,13 @@ export default function ReportsPage() {
                       >
                         {statusLabels[report.status] || report.status}
                       </span>
-                      <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-700 whitespace-nowrap">
+                      <span className="rounded-full bg-tint px-3 py-1 text-xs font-medium text-on-tint whitespace-nowrap">
                         {reportTypeLabels[report.report_type] || report.report_type}
                       </span>
                     </div>
 
                     {report.description && (
-                      <p className="text-sm text-dark-lighter mb-4 line-clamp-2 leading-relaxed">
+                      <p className="text-sm text-text-secondary mb-4 line-clamp-2 leading-relaxed">
                         {report.description}
                       </p>
                     )}
@@ -581,26 +581,26 @@ export default function ReportsPage() {
                     <div className="mb-4 flex flex-wrap gap-4 text-sm">
                       {report.student_name && (
                         <div className="flex items-center gap-2">
-                          <UserIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
-                          <span className="text-dark-lighter">الطالب:</span>
-                          <span className="font-semibold text-dark">{report.student_name}</span>
+                          <UserIcon className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span className="text-text-secondary">الطالب:</span>
+                          <span className="font-semibold text-text">{report.student_name}</span>
                         </div>
                       )}
                       {report.target_type === 'case' && report.target_id && (
                         <div className="flex items-center gap-2">
-                          <ChartBarIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
-                          <span className="text-dark-lighter">الحالة:</span>
-                          <span className="font-semibold text-dark">
+                          <ChartBarIcon className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span className="text-text-secondary">الحالة:</span>
+                          <span className="font-semibold text-text">
                             {casesData[report.target_id]?.title || 'جاري التحميل...'}
                           </span>
                         </div>
                       )}
                     </div>
 
-                    <div className="flex items-center gap-4 text-xs text-dark-lighter flex-wrap">
+                    <div className="flex items-center gap-4 text-xs text-text-secondary flex-wrap">
                       {report.created_at && (
                         <div className="flex items-center gap-2">
-                          <CalendarIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                          <CalendarIcon className="h-4 w-4 text-primary flex-shrink-0" />
                           <span>
                             {new Date(report.created_at).toLocaleDateString('ar-SA', {
                               year: 'numeric',
@@ -612,14 +612,14 @@ export default function ReportsPage() {
                       )}
                       {report.created_by && (
                         <div className="flex items-center gap-2">
-                          <UserIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
+                          <UserIcon className="h-4 w-4 text-primary flex-shrink-0" />
                           <span>
                             {report.created_by?.first_name} {report.created_by?.last_name}
                           </span>
                         </div>
                       )}
                       {report.file_url && (
-                        <div className="flex items-center gap-2 text-sky-600">
+                        <div className="flex items-center gap-2 text-link">
                           <DocumentArrowDownIcon className="h-4 w-4 flex-shrink-0" />
                           <span className="font-semibold">ملف متاح للتحميل</span>
                         </div>
@@ -630,7 +630,7 @@ export default function ReportsPage() {
                   <div className="flex gap-2 flex-shrink-0 flex-wrap">
                     <button
                       onClick={() => handleViewDetails(report.id)}
-                      className="flex items-center gap-2 rounded-lg bg-sky-500 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+                      className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
                     >
                       <EyeIcon className="h-4 w-4" />
                       عرض التفاصيل
@@ -639,14 +639,14 @@ export default function ReportsPage() {
                       <>
                         <button
                           onClick={() => handleEditReport(report)}
-                          className="flex items-center gap-2 rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
+                          className="flex items-center gap-2 rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-light hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
                         >
                           <PencilIcon className="h-4 w-4" />
                           تعديل
                         </button>
                         <button
                           onClick={() => handleSubmitReport(report.id)}
-                          className="flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                          className="flex items-center gap-2 rounded-lg bg-info-500 px-4 py-2 text-sm font-semibold text-light hover:bg-info-600 transition-colors focus:outline-none focus:ring-2 focus:ring-info-500/30"
                         >
                           <PaperAirplaneIcon className="h-4 w-4" />
                           تقديم
@@ -661,7 +661,7 @@ export default function ReportsPage() {
                             setApproveFormData({ review_notes: '', score: '' });
                             setShowApproveModal(true);
                           }}
-                          className="flex items-center gap-2 rounded-lg bg-green-500 px-4 py-2 text-sm font-semibold text-white hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500/30"
+                          className="flex items-center gap-2 rounded-lg bg-success-500 px-4 py-2 text-sm font-semibold text-light hover:bg-success-600 transition-colors focus:outline-none focus:ring-2 focus:ring-success-500/30"
                         >
                           <CheckCircleIcon className="h-4 w-4" />
                           موافقة
@@ -672,7 +672,7 @@ export default function ReportsPage() {
                             setRejectFormData({ review_notes: '' });
                             setShowRejectModal(true);
                           }}
-                          className="flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500/30"
+                          className="flex items-center gap-2 rounded-lg bg-danger-500 px-4 py-2 text-sm font-semibold text-light hover:bg-danger-600 transition-colors focus:outline-none focus:ring-2 focus:ring-danger-500/30"
                         >
                           <XCircleIcon className="h-4 w-4" />
                           رفض
@@ -683,7 +683,7 @@ export default function ReportsPage() {
                       <a
                         href={report.file_url}
                         download
-                        className="flex items-center gap-2 rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/30"
+                        className="flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-light hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring/30"
                       >
                         <DocumentArrowDownIcon className="h-4 w-4" />
                         تحميل
@@ -700,24 +700,24 @@ export default function ReportsPage() {
       {/* Report Details Modal */}
       {showDetailsModal && currentReport && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>تفاصيل التقرير</h3>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>تفاصيل التقرير</h3>
 
             <div className="space-y-5">
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2">العنوان</label>
-                <p className="text-sm font-semibold text-dark leading-relaxed">{currentReport.title || 'بدون عنوان'}</p>
+                <label className="block text-sm font-semibold text-text mb-2">العنوان</label>
+                <p className="text-sm font-semibold text-text leading-relaxed">{currentReport.title || 'بدون عنوان'}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2">نوع التقرير</label>
-                  <p className="text-sm font-semibold text-dark leading-relaxed">
+                  <label className="block text-sm font-semibold text-text mb-2">نوع التقرير</label>
+                  <p className="text-sm font-semibold text-text leading-relaxed">
                     {reportTypeLabels[currentReport.report_type] || currentReport.report_type}
                   </p>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2">الحالة</label>
+                  <label className="block text-sm font-semibold text-text mb-2">الحالة</label>
                   <span
                     className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${
                       statusColors[currentReport.status] || statusColors.draft
@@ -730,46 +730,46 @@ export default function ReportsPage() {
 
               {currentReport.description && (
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2">الوصف</label>
-                  <p className="text-sm text-dark whitespace-pre-wrap leading-relaxed">{currentReport.description}</p>
+                  <label className="block text-sm font-semibold text-text mb-2">الوصف</label>
+                  <p className="text-sm text-text whitespace-pre-wrap leading-relaxed">{currentReport.description}</p>
                 </div>
               )}
 
               {/* Author, Student, Supervisor Info */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-sky-100">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border">
                 {currentReport.author_name && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">المؤلف</label>
+                    <label className="block text-sm font-semibold text-text mb-2">المؤلف</label>
                     <div className="flex items-center gap-2">
-                      <UserIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">{currentReport.author_name}</p>
+                      <UserIcon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <p className="text-sm text-text">{currentReport.author_name}</p>
                     </div>
                   </div>
                 )}
                 {currentReport.student_name && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">الطالب</label>
+                    <label className="block text-sm font-semibold text-text mb-2">الطالب</label>
                     <div className="flex items-center gap-2">
-                      <UserIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">{currentReport.student_name}</p>
+                      <UserIcon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <p className="text-sm text-text">{currentReport.student_name}</p>
                     </div>
                   </div>
                 )}
                 {currentReport.supervisor_name && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">المشرف</label>
+                    <label className="block text-sm font-semibold text-text mb-2">المشرف</label>
                     <div className="flex items-center gap-2">
-                      <UserIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">{currentReport.supervisor_name}</p>
+                      <UserIcon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <p className="text-sm text-text">{currentReport.supervisor_name}</p>
                     </div>
                   </div>
                 )}
                 {currentReport.approved_by_name && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">الموافق عليه بواسطة</label>
+                    <label className="block text-sm font-semibold text-text mb-2">الموافق عليه بواسطة</label>
                     <div className="flex items-center gap-2">
-                      <UserIcon className="h-4 w-4 text-green-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">{currentReport.approved_by_name}</p>
+                      <UserIcon className="h-4 w-4 text-success-500 flex-shrink-0" />
+                      <p className="text-sm text-text">{currentReport.approved_by_name}</p>
                     </div>
                   </div>
                 )}
@@ -777,24 +777,24 @@ export default function ReportsPage() {
 
               {/* Content (Diagnosis, Sessions) */}
               {currentReport.content && (
-                <div className="pt-4 border-t border-sky-100">
-                  <label className="block text-sm font-semibold text-dark mb-3">محتوى التقرير</label>
+                <div className="pt-4 border-t border-border">
+                  <label className="block text-sm font-semibold text-text mb-3">محتوى التقرير</label>
                   <div className="space-y-3">
                     {currentReport.content.diagnosis && (
                       <div>
-                        <label className="block text-xs font-semibold text-dark-lighter mb-1">التشخيص</label>
-                        <p className="text-sm text-dark whitespace-pre-wrap leading-relaxed bg-sky-50 p-3 rounded-lg">
+                        <label className="block text-xs font-semibold text-text-secondary mb-1">التشخيص</label>
+                        <p className="text-sm text-text whitespace-pre-wrap leading-relaxed bg-primary-muted p-3 rounded-lg">
                           {currentReport.content.diagnosis}
                         </p>
                       </div>
                     )}
                     {currentReport.content.sessions && Array.isArray(currentReport.content.sessions) && currentReport.content.sessions.length > 0 && (
                       <div>
-                        <label className="block text-xs font-semibold text-dark-lighter mb-1">الجلسات</label>
+                        <label className="block text-xs font-semibold text-text-secondary mb-1">الجلسات</label>
                         <div className="space-y-2">
                           {currentReport.content.sessions.map((session, index) => (
-                            <div key={index} className="bg-sky-50 p-3 rounded-lg">
-                              <p className="text-sm text-dark">{JSON.stringify(session, null, 2)}</p>
+                            <div key={index} className="bg-primary-muted p-3 rounded-lg">
+                              <p className="text-sm text-text">{JSON.stringify(session, null, 2)}</p>
                             </div>
                           ))}
                         </div>
@@ -806,30 +806,30 @@ export default function ReportsPage() {
 
               {/* Score, Feedback, Review Notes */}
               {(currentReport.score !== null && currentReport.score !== undefined) && (
-                <div className="pt-4 border-t border-sky-100">
+                <div className="pt-4 border-t border-border">
                   <div className="flex items-center gap-2 mb-3">
-                    <StarIcon className="h-5 w-5 text-yellow-500" />
-                    <label className="block text-sm font-semibold text-dark">النتيجة</label>
+                    <StarIcon className="h-5 w-5 text-warning-500" />
+                    <label className="block text-sm font-semibold text-text">النتيجة</label>
                   </div>
-                  <div className="bg-yellow-50 p-3 rounded-lg">
-                    <p className="text-lg font-bold text-dark">{currentReport.score}/100</p>
+                  <div className="bg-warning-50 p-3 rounded-lg">
+                    <p className="text-lg font-bold text-text">{currentReport.score}/100</p>
                   </div>
                 </div>
               )}
 
               {currentReport.feedback && (
-                <div className="pt-4 border-t border-sky-100">
-                  <label className="block text-sm font-semibold text-dark mb-2">التعليقات</label>
-                  <p className="text-sm text-dark whitespace-pre-wrap leading-relaxed bg-sky-50 p-3 rounded-lg">
+                <div className="pt-4 border-t border-border">
+                  <label className="block text-sm font-semibold text-text mb-2">التعليقات</label>
+                  <p className="text-sm text-text whitespace-pre-wrap leading-relaxed bg-primary-muted p-3 rounded-lg">
                     {currentReport.feedback}
                   </p>
                 </div>
               )}
 
               {currentReport.review_notes && (
-                <div className="pt-4 border-t border-sky-100">
-                  <label className="block text-sm font-semibold text-dark mb-2">ملاحظات المراجعة</label>
-                  <p className="text-sm text-dark whitespace-pre-wrap leading-relaxed bg-green-50 p-3 rounded-lg">
+                <div className="pt-4 border-t border-border">
+                  <label className="block text-sm font-semibold text-text mb-2">ملاحظات المراجعة</label>
+                  <p className="text-sm text-text whitespace-pre-wrap leading-relaxed bg-success-50 p-3 rounded-lg">
                     {currentReport.review_notes}
                   </p>
                 </div>
@@ -837,8 +837,8 @@ export default function ReportsPage() {
 
               {/* Attachments */}
               {currentReport.attachments && Array.isArray(currentReport.attachments) && currentReport.attachments.length > 0 && (
-                <div className="pt-4 border-t border-sky-100">
-                  <label className="block text-sm font-semibold text-dark mb-3">المرفقات</label>
+                <div className="pt-4 border-t border-border">
+                  <label className="block text-sm font-semibold text-text mb-3">المرفقات</label>
                   <div className="space-y-2">
                     {currentReport.attachments.map((attachment, index) => (
                       <a
@@ -846,14 +846,14 @@ export default function ReportsPage() {
                         href={attachment.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-3 bg-sky-50 hover:bg-sky-100 rounded-lg transition-colors"
+                        className="flex items-center gap-3 p-3 bg-primary-muted hover:bg-tint-hover rounded-lg transition-colors"
                       >
-                        <PhotoIcon className="h-5 w-5 text-sky-600 flex-shrink-0" />
+                        <PhotoIcon className="h-5 w-5 text-link flex-shrink-0" />
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-dark truncate">{attachment.type || `مرفق ${index + 1}`}</p>
-                          <p className="text-xs text-dark-lighter truncate">{attachment.url}</p>
+                          <p className="text-sm font-semibold text-text truncate">{attachment.type || `مرفق ${index + 1}`}</p>
+                          <p className="text-xs text-text-secondary truncate">{attachment.url}</p>
                         </div>
-                        <LinkIcon className="h-4 w-4 text-sky-600 flex-shrink-0" />
+                        <LinkIcon className="h-4 w-4 text-link flex-shrink-0" />
                       </a>
                     ))}
                   </div>
@@ -861,13 +861,13 @@ export default function ReportsPage() {
               )}
 
               {/* Dates */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-sky-100">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border">
                 {currentReport.created_at && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">تاريخ الإنشاء</label>
+                    <label className="block text-sm font-semibold text-text mb-2">تاريخ الإنشاء</label>
                     <div className="flex items-center gap-2">
-                      <CalendarIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">
+                      <CalendarIcon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <p className="text-sm text-text">
                         {new Date(currentReport.created_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'short',
@@ -881,10 +881,10 @@ export default function ReportsPage() {
                 )}
                 {currentReport.submitted_at && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">تاريخ التقديم</label>
+                    <label className="block text-sm font-semibold text-text mb-2">تاريخ التقديم</label>
                     <div className="flex items-center gap-2">
-                      <CalendarIcon className="h-4 w-4 text-blue-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">
+                      <CalendarIcon className="h-4 w-4 text-info-500 flex-shrink-0" />
+                      <p className="text-sm text-text">
                         {new Date(currentReport.submitted_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'short',
@@ -898,10 +898,10 @@ export default function ReportsPage() {
                 )}
                 {currentReport.approved_at && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">تاريخ الموافقة</label>
+                    <label className="block text-sm font-semibold text-text mb-2">تاريخ الموافقة</label>
                     <div className="flex items-center gap-2">
-                      <CalendarIcon className="h-4 w-4 text-green-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">
+                      <CalendarIcon className="h-4 w-4 text-success-500 flex-shrink-0" />
+                      <p className="text-sm text-text">
                         {new Date(currentReport.approved_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'short',
@@ -915,10 +915,10 @@ export default function ReportsPage() {
                 )}
                 {currentReport.locked_at && (
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2">تاريخ الإقفال</label>
+                    <label className="block text-sm font-semibold text-text mb-2">تاريخ الإقفال</label>
                     <div className="flex items-center gap-2">
-                      <ClockIcon className="h-4 w-4 text-sky-500 flex-shrink-0" />
-                      <p className="text-sm text-dark">
+                      <ClockIcon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <p className="text-sm text-text">
                         {new Date(currentReport.locked_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'short',
@@ -934,11 +934,11 @@ export default function ReportsPage() {
 
               {currentReport.file_url && (
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2">الملف</label>
+                  <label className="block text-sm font-semibold text-text mb-2">الملف</label>
                   <a
                     href={currentReport.file_url}
                     download
-                    className="flex items-center gap-2 text-sky-600 hover:text-sky-700 font-semibold transition-colors"
+                    className="flex items-center gap-2 text-link hover:text-on-tint font-semibold transition-colors"
                   >
                     <DocumentArrowDownIcon className="h-5 w-5" />
                     <span>تحميل التقرير</span>
@@ -952,7 +952,7 @@ export default function ReportsPage() {
                 <>
                   <button
                     onClick={() => handleEditReport(currentReport)}
-                    className="flex items-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
+                    className="flex items-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
                   >
                     <PencilIcon className="h-5 w-5" />
                     تعديل
@@ -961,7 +961,7 @@ export default function ReportsPage() {
                     onClick={() => {
                       handleSubmitReport(currentReport.id);
                     }}
-                    className="flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                    className="flex items-center gap-2 rounded-lg bg-info-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-info-600 transition-colors focus:outline-none focus:ring-2 focus:ring-info-500/30"
                   >
                     <PaperAirplaneIcon className="h-5 w-5" />
                     تقديم التقرير
@@ -976,7 +976,7 @@ export default function ReportsPage() {
                       setApproveFormData({ review_notes: '', score: '' });
                       setShowApproveModal(true);
                     }}
-                    className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-green-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500/30"
+                    className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-success-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-success-600 transition-colors focus:outline-none focus:ring-2 focus:ring-success-500/30"
                   >
                     <CheckCircleIcon className="h-5 w-5" />
                     موافقة
@@ -987,7 +987,7 @@ export default function ReportsPage() {
                       setRejectFormData({ review_notes: '' });
                       setShowRejectModal(true);
                     }}
-                    className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-red-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500/30"
+                    className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-danger-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-danger-600 transition-colors focus:outline-none focus:ring-2 focus:ring-danger-500/30"
                   >
                     <XCircleIcon className="h-5 w-5" />
                     رفض
@@ -999,7 +999,7 @@ export default function ReportsPage() {
                   setShowDetailsModal(false);
                   setSelectedReportId(null);
                 }}
-                className="flex-1 rounded-lg border-2 border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="flex-1 rounded-lg border-2 border-border-strong bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
               >
                 إغلاق
               </button>
@@ -1011,14 +1011,14 @@ export default function ReportsPage() {
       {/* Approve Report Modal */}
       {showApproveModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
               الموافقة على التقرير
             </h3>
 
             <div className="space-y-5">
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
+                <label className="block text-sm font-semibold text-text mb-2.5">
                   ملاحظات المراجعة (اختياري)
                 </label>
                 <textarea
@@ -1026,12 +1026,12 @@ export default function ReportsPage() {
                   onChange={(e) => setApproveFormData({ ...approveFormData, review_notes: e.target.value })}
                   rows={4}
                   placeholder="أدخل ملاحظات المراجعة..."
-                  className="w-full rounded-lg border-2 border-green-200 bg-green-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-green-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-400/20 transition-all duration-200 resize-none"
+                  className="w-full rounded-lg border-2 border-success-200 bg-success-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-success-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-success-400/20 transition-all duration-200 resize-none"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
+                <label className="block text-sm font-semibold text-text mb-2.5">
                   النقاط (اختياري)
                 </label>
                 <input
@@ -1042,7 +1042,7 @@ export default function ReportsPage() {
                   max="100"
                   step="0.1"
                   placeholder="أدخل النقاط (0-100)"
-                  className="w-full rounded-lg border-2 border-green-200 bg-green-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-green-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-green-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-success-200 bg-success-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-success-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-success-400/20 transition-all duration-200"
                 />
               </div>
             </div>
@@ -1050,7 +1050,7 @@ export default function ReportsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleApproveReport}
-                className="flex-1 rounded-lg bg-green-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500/30"
+                className="flex-1 rounded-lg bg-success-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-success-600 transition-colors focus:outline-none focus:ring-2 focus:ring-success-500/30"
               >
                 موافقة
               </button>
@@ -1060,7 +1060,7 @@ export default function ReportsPage() {
                   setSelectedReportId(null);
                   setApproveFormData({ review_notes: '', score: '' });
                 }}
-                className="flex-1 rounded-lg border-2 border-green-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-green-50 hover:border-green-300 transition-colors focus:outline-none focus:ring-2 focus:ring-green-400/20"
+                className="flex-1 rounded-lg border-2 border-success-200 bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-success-50 hover:border-success-300 transition-colors focus:outline-none focus:ring-2 focus:ring-success-400/20"
               >
                 إلغاء
               </button>
@@ -1072,22 +1072,22 @@ export default function ReportsPage() {
       {/* Reject Report Modal */}
       {showRejectModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
               رفض التقرير
             </h3>
 
             <div className="space-y-5">
-              <div className="rounded-lg bg-red-50 border-2 border-red-200 p-4">
-                <p className="text-sm font-semibold text-red-800 mb-2">تنبيه</p>
-                <p className="text-sm text-red-700">
+              <div className="rounded-lg bg-danger-50 border-2 border-danger-200 p-4">
+                <p className="text-sm font-semibold text-danger-800 mb-2">تنبيه</p>
+                <p className="text-sm text-danger-700">
                   يجب إدخال ملاحظات المراجعة عند رفض التقرير لتوضيح سبب الرفض.
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  ملاحظات المراجعة <span className="text-red-600">*</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  ملاحظات المراجعة <span className="text-danger-600">*</span>
                 </label>
                 <textarea
                   value={rejectFormData.review_notes}
@@ -1095,7 +1095,7 @@ export default function ReportsPage() {
                   rows={6}
                   placeholder="أدخل ملاحظات المراجعة (مطلوب)..."
                   required
-                  className="w-full rounded-lg border-2 border-red-200 bg-red-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-red-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-400/20 transition-all duration-200 resize-none"
+                  className="w-full rounded-lg border-2 border-danger-200 bg-danger-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-danger-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-danger-400/20 transition-all duration-200 resize-none"
                 />
               </div>
             </div>
@@ -1103,7 +1103,7 @@ export default function ReportsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleRejectReport}
-                className="flex-1 rounded-lg bg-red-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500/30"
+                className="flex-1 rounded-lg bg-danger-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-danger-600 transition-colors focus:outline-none focus:ring-2 focus:ring-danger-500/30"
               >
                 رفض
               </button>
@@ -1113,7 +1113,7 @@ export default function ReportsPage() {
                   setSelectedReportId(null);
                   setRejectFormData({ review_notes: '' });
                 }}
-                className="flex-1 rounded-lg border-2 border-red-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-red-50 hover:border-red-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-400/20"
+                className="flex-1 rounded-lg border-2 border-danger-200 bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-danger-50 hover:border-danger-300 transition-colors focus:outline-none focus:ring-2 focus:ring-danger-400/20"
               >
                 إلغاء
               </button>
@@ -1125,21 +1125,21 @@ export default function ReportsPage() {
       {/* Create Report Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-3xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+          <div className="w-full max-w-3xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
               إنشاء تقرير جديد
             </h3>
 
             <div className="space-y-5">
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  نوع التقرير <span className="text-sky-600">*</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  نوع التقرير <span className="text-link">*</span>
                 </label>
                 <select
                   value={createFormData.report_type}
                   onChange={(e) => setCreateFormData({ ...createFormData, report_type: e.target.value })}
                   required
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                 >
                   <option value="clinical_case">تقرير حالة سريرية</option>
                   <option value="cases">تقرير الحالات</option>
@@ -1152,14 +1152,14 @@ export default function ReportsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  نوع الهدف <span className="text-sky-600">*</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  نوع الهدف <span className="text-link">*</span>
                 </label>
                 <select
                   value={createFormData.target_type}
                   onChange={(e) => setCreateFormData({ ...createFormData, target_type: e.target.value, target_id: '' })}
                   required
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                 >
                   <option value="case">حالة سريرية</option>
                   <option value="session">جلسة</option>
@@ -1169,14 +1169,14 @@ export default function ReportsPage() {
 
               {createFormData.target_type === 'case' && (
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2.5">
-                    الحالة السريرية <span className="text-sky-600">*</span>
+                  <label className="block text-sm font-semibold text-text mb-2.5">
+                    الحالة السريرية <span className="text-link">*</span>
                   </label>
                   <select
                     value={createFormData.target_id}
                     onChange={(e) => setCreateFormData({ ...createFormData, target_id: e.target.value })}
                     required
-                    className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                    className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                   >
                     <option value="">اختر الحالة</option>
                     {Array.isArray(cases) && cases.map((caseItem) => (
@@ -1190,8 +1190,8 @@ export default function ReportsPage() {
 
               {(createFormData.target_type === 'session' || createFormData.target_type === 'appointment') && (
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2.5">
-                    معرف {createFormData.target_type === 'session' ? 'الجلسة' : 'الموعد'} <span className="text-sky-600">*</span>
+                  <label className="block text-sm font-semibold text-text mb-2.5">
+                    معرف {createFormData.target_type === 'session' ? 'الجلسة' : 'الموعد'} <span className="text-link">*</span>
                   </label>
                   <input
                     type="text"
@@ -1199,14 +1199,14 @@ export default function ReportsPage() {
                     onChange={(e) => setCreateFormData({ ...createFormData, target_id: e.target.value })}
                     required
                     placeholder={`أدخل معرف ${createFormData.target_type === 'session' ? 'الجلسة' : 'الموعد'} (UUID)`}
-                    className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                    className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                   />
                 </div>
               )}
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  العنوان <span className="text-sky-600">*</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  العنوان <span className="text-link">*</span>
                 </label>
                 <input
                   type="text"
@@ -1214,74 +1214,74 @@ export default function ReportsPage() {
                   onChange={(e) => setCreateFormData({ ...createFormData, title: e.target.value })}
                   required
                   placeholder="أدخل عنوان التقرير"
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  الوصف <span className="text-dark-lighter text-xs">(اختياري)</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  الوصف <span className="text-text-secondary text-xs">(اختياري)</span>
                 </label>
                 <textarea
                   value={createFormData.description}
                   onChange={(e) => setCreateFormData({ ...createFormData, description: e.target.value })}
                   rows={3}
                   placeholder="ملخص قصير للتقرير..."
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                 />
               </div>
 
               {createFormData.report_type === 'clinical_case' && (
                 <>
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      التشخيص <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      التشخيص <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={createFormData.diagnosis}
                       onChange={(e) => setCreateFormData({ ...createFormData, diagnosis: e.target.value })}
                       rows={4}
                       placeholder="أدخل التشخيص..."
-                      className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      الملخص <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      الملخص <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={createFormData.summary}
                       onChange={(e) => setCreateFormData({ ...createFormData, summary: e.target.value })}
                       rows={4}
                       placeholder="أدخل ملخص التقرير..."
-                      className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      خطة العلاج <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      خطة العلاج <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={createFormData.treatment_plan}
                       onChange={(e) => setCreateFormData({ ...createFormData, treatment_plan: e.target.value })}
                       rows={4}
                       placeholder="أدخل خطة العلاج..."
-                      className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      ملاحظات <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      ملاحظات <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={createFormData.notes}
                       onChange={(e) => setCreateFormData({ ...createFormData, notes: e.target.value })}
                       rows={3}
                       placeholder="أدخل ملاحظات إضافية..."
-                      className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                     />
                   </div>
                 </>
@@ -1289,15 +1289,15 @@ export default function ReportsPage() {
 
               {createFormData.report_type !== 'clinical_case' && (
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2.5">
-                    المحتوى <span className="text-dark-lighter text-xs">(اختياري)</span>
+                  <label className="block text-sm font-semibold text-text mb-2.5">
+                    المحتوى <span className="text-text-secondary text-xs">(اختياري)</span>
                   </label>
                   <textarea
                     value={createFormData.summary}
                     onChange={(e) => setCreateFormData({ ...createFormData, summary: e.target.value })}
                     rows={6}
                     placeholder="أدخل محتوى التقرير..."
-                    className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                    className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                   />
                 </div>
               )}
@@ -1306,7 +1306,7 @@ export default function ReportsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleCreateReport}
-                className="flex-1 rounded-lg bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+                className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
               >
                 إنشاء
               </button>
@@ -1325,7 +1325,7 @@ export default function ReportsPage() {
                     notes: '',
                   });
                 }}
-                className="flex-1 rounded-lg border-2 border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="flex-1 rounded-lg border-2 border-border-strong bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
               >
                 إلغاء
               </button>
@@ -1337,8 +1337,8 @@ export default function ReportsPage() {
       {/* Edit Report Modal */}
       {showEditModal && selectedReport && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-3xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+          <div className="w-full max-w-3xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
               تعديل التقرير
             </h3>
 
@@ -1353,7 +1353,7 @@ export default function ReportsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
+                <label className="block text-sm font-semibold text-text mb-2.5">
                   العنوان <span className="text-orange-600">*</span>
                 </label>
                 <input
@@ -1362,74 +1362,74 @@ export default function ReportsPage() {
                   onChange={(e) => setEditFormData({ ...editFormData, title: e.target.value })}
                   required
                   placeholder="أدخل عنوان التقرير"
-                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  الوصف <span className="text-dark-lighter text-xs">(اختياري)</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  الوصف <span className="text-text-secondary text-xs">(اختياري)</span>
                 </label>
                 <textarea
                   value={editFormData.description}
                   onChange={(e) => setEditFormData({ ...editFormData, description: e.target.value })}
                   rows={3}
                   placeholder="ملخص قصير للتقرير..."
-                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
+                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
                 />
               </div>
 
               {selectedReport?.report_type === 'clinical_case' && (
                 <>
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      التشخيص <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      التشخيص <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={editFormData.diagnosis}
                       onChange={(e) => setEditFormData({ ...editFormData, diagnosis: e.target.value })}
                       rows={4}
                       placeholder="أدخل التشخيص..."
-                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      الملخص <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      الملخص <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={editFormData.summary}
                       onChange={(e) => setEditFormData({ ...editFormData, summary: e.target.value })}
                       rows={4}
                       placeholder="أدخل ملخص التقرير..."
-                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      خطة العلاج <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      خطة العلاج <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={editFormData.treatment_plan}
                       onChange={(e) => setEditFormData({ ...editFormData, treatment_plan: e.target.value })}
                       rows={4}
                       placeholder="أدخل خطة العلاج..."
-                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-dark mb-2.5">
-                      ملاحظات <span className="text-dark-lighter text-xs">(اختياري)</span>
+                    <label className="block text-sm font-semibold text-text mb-2.5">
+                      ملاحظات <span className="text-text-secondary text-xs">(اختياري)</span>
                     </label>
                     <textarea
                       value={editFormData.notes}
                       onChange={(e) => setEditFormData({ ...editFormData, notes: e.target.value })}
                       rows={3}
                       placeholder="أدخل ملاحظات إضافية..."
-                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
                     />
                   </div>
                 </>
@@ -1437,15 +1437,15 @@ export default function ReportsPage() {
 
               {selectedReport?.report_type !== 'clinical_case' && (
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2.5">
-                    المحتوى <span className="text-dark-lighter text-xs">(اختياري)</span>
+                  <label className="block text-sm font-semibold text-text mb-2.5">
+                    المحتوى <span className="text-text-secondary text-xs">(اختياري)</span>
                   </label>
                   <textarea
                     value={editFormData.summary}
                     onChange={(e) => setEditFormData({ ...editFormData, summary: e.target.value })}
                     rows={6}
                     placeholder="أدخل محتوى التقرير..."
-                    className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
+                    className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
                   />
                 </div>
               )}
@@ -1454,7 +1454,7 @@ export default function ReportsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleUpdateReport}
-                className="flex-1 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
+                className="flex-1 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
               >
                 حفظ التغييرات
               </button>
@@ -1472,7 +1472,7 @@ export default function ReportsPage() {
           notes: '',
         });
                 }}
-                className="flex-1 rounded-lg border-2 border-orange-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-orange-50 hover:border-orange-300 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400/20"
+                className="flex-1 rounded-lg border-2 border-orange-200 bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-orange-50 hover:border-orange-300 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400/20"
               >
                 إلغاء
               </button>

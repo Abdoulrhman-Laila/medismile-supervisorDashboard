@@ -27,10 +27,10 @@ const statusLabels = {
 };
 
 const statusColors = {
-  draft: 'bg-sky-50 text-sky-700',
-  completed: 'bg-sky-100 text-sky-800',
-  needs_review: 'bg-sky-200 text-sky-800',
-  approved: 'bg-sky-500 text-white',
+  draft: 'bg-primary-muted text-on-tint',
+  completed: 'bg-tint text-on-tint-strong',
+  needs_review: 'bg-tint-strong text-on-tint-strong',
+  approved: 'bg-primary text-light',
   rejected: 'bg-dark-lighter text-light',
 };
 
@@ -102,45 +102,45 @@ export default function SessionsPage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div className="mb-2">
-        <h1 className="text-2xl sm:text-3xl font-bold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+        <h1 className="text-2xl sm:text-3xl font-bold text-text mb-2" style={{ fontFamily: 'inherit' }}>
           مراجعة الجلسات
         </h1>
-        <p className="text-sm sm:text-base text-dark-lighter leading-relaxed" style={{ fontFamily: 'inherit' }}>
+        <p className="text-sm sm:text-base text-text-secondary leading-relaxed" style={{ fontFamily: 'inherit' }}>
           مراجعة وموافقة/رفض جلسات العلاج
         </p>
       </div>
 
       {/* Stats Card */}
-      <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+      <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
         <div className="flex items-center justify-between">
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-dark-lighter mb-2" style={{ fontFamily: 'inherit' }}>
+            <p className="text-sm font-medium text-text-secondary mb-2" style={{ fontFamily: 'inherit' }}>
               الجلسات التي تحتاج مراجعة
             </p>
-            <p className="text-2xl sm:text-3xl font-bold text-dark" style={{ fontFamily: 'inherit' }}>
+            <p className="text-2xl sm:text-3xl font-bold text-text" style={{ fontFamily: 'inherit' }}>
               {sessionsNeedingReview.length}
             </p>
           </div>
           <div className="flex-shrink-0">
-            <ClipboardDocumentCheckIcon className="h-8 w-8 text-sky-500" />
+            <ClipboardDocumentCheckIcon className="h-8 w-8 text-primary" />
           </div>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+      <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* Search */}
           <div className="relative flex-1 max-w-md">
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <MagnifyingGlassIcon className="h-5 w-5 text-dark-lighter" />
+              <MagnifyingGlassIcon className="h-5 w-5 text-text-secondary" />
             </div>
             <input
               type="text"
               placeholder="بحث في الجلسات..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full rounded-lg border border-sky-200 bg-sky-50 px-4 py-2.5 pr-10 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all"
+              className="block w-full rounded-lg border border-border-strong bg-primary-muted px-4 py-2.5 pr-10 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all"
               style={{ fontFamily: 'inherit' }}
             />
           </div>
@@ -148,7 +148,7 @@ export default function SessionsPage() {
           {/* Filter Toggle */}
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-2 rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm font-medium text-dark hover:bg-sky-50 hover:border-sky-300 transition-all focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+            className="flex items-center gap-2 rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm font-medium text-text hover:bg-primary-muted hover:border-border-hover transition-all focus:outline-none focus:ring-2 focus:ring-ring/20"
             style={{ fontFamily: 'inherit' }}
           >
             <FunnelIcon className="h-5 w-5" />
@@ -158,9 +158,9 @@ export default function SessionsPage() {
 
         {/* Filters Panel */}
         {showFilters && (
-          <div className="mt-5 grid grid-cols-1 gap-4 border-t border-sky-100 pt-5 md:grid-cols-2">
+          <div className="mt-5 grid grid-cols-1 gap-4 border-t border-border pt-5 md:grid-cols-2">
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5" style={{ fontFamily: 'inherit' }}>
+              <label className="block text-sm font-semibold text-text mb-2.5" style={{ fontFamily: 'inherit' }}>
                 الحالة
               </label>
               <select
@@ -168,7 +168,7 @@ export default function SessionsPage() {
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, status: e.target.value })
                 }
-                className="w-full rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all"
+                className="w-full rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm text-text focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all"
                 style={{ fontFamily: 'inherit' }}
               >
                 <option value="">جميع الحالات</option>
@@ -180,7 +180,7 @@ export default function SessionsPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5" style={{ fontFamily: 'inherit' }}>
+              <label className="block text-sm font-semibold text-text mb-2.5" style={{ fontFamily: 'inherit' }}>
                 الحالة السريرية
               </label>
               <select
@@ -188,7 +188,7 @@ export default function SessionsPage() {
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, case_id: e.target.value })
                 }
-                className="w-full rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all"
+                className="w-full rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm text-text focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all"
                 style={{ fontFamily: 'inherit' }}
               >
                 <option value="">جميع الحالات</option>
@@ -204,36 +204,36 @@ export default function SessionsPage() {
       </div>
 
       {/* Sessions List */}
-      <div className="rounded-lg bg-white border border-sky-100 overflow-hidden shadow-sm">
+      <div className="rounded-lg bg-surface border border-border overflow-hidden shadow-sm">
         {loading ? (
           <div className="p-12 text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-            <p className="mt-4 text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+            <p className="mt-4 text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
               جاري تحميل الجلسات...
             </p>
           </div>
         ) : filteredSessions.length === 0 ? (
           <div className="p-12 text-center">
-            <ClipboardDocumentCheckIcon className="mx-auto h-12 w-12 text-dark-lighter" />
-            <p className="mt-4 text-base font-semibold text-dark" style={{ fontFamily: 'inherit' }}>
+            <ClipboardDocumentCheckIcon className="mx-auto h-12 w-12 text-text-secondary" />
+            <p className="mt-4 text-base font-semibold text-text" style={{ fontFamily: 'inherit' }}>
               لا توجد جلسات تحتاج مراجعة
             </p>
-            <p className="mt-2 text-sm text-dark-lighter leading-relaxed" style={{ fontFamily: 'inherit' }}>
+            <p className="mt-2 text-sm text-text-secondary leading-relaxed" style={{ fontFamily: 'inherit' }}>
               {searchTerm || localFilters.status || localFilters.case_id
                 ? 'لا توجد جلسات تطابق معايير البحث'
                 : 'جميع الجلسات تمت مراجعتها'}
             </p>
           </div>
         ) : (
-          <div className="divide-y divide-sky-100">
+          <div className="divide-y divide-border">
             {filteredSessions.map((session) => (
-              <div key={session.id} className="p-5 sm:p-6 hover:bg-sky-50 transition-colors">
+              <div key={session.id} className="p-5 sm:p-6 hover:bg-primary-muted transition-colors">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2.5 mb-3 flex-wrap">
                       <Link
                         href={`/dashboard/cases/${session.case}`}
-                        className="text-base sm:text-lg font-semibold text-dark hover:text-sky-600 transition-colors"
+                        className="text-base sm:text-lg font-semibold text-text hover:text-link transition-colors"
                         style={{ fontFamily: 'inherit' }}
                       >
                         {session.case_title || 'حالة سريرية'}
@@ -248,27 +248,27 @@ export default function SessionsPage() {
                       </span>
                     </div>
                     <div className="mb-4">
-                      <p className="text-sm text-dark-lighter mb-2" style={{ fontFamily: 'inherit' }}>
+                      <p className="text-sm text-text-secondary mb-2" style={{ fontFamily: 'inherit' }}>
                         الطالب:{' '}
-                        <span className="font-medium text-dark">
+                        <span className="font-medium text-text">
                           {session.student?.first_name} {session.student?.last_name}
                         </span>
                       </p>
-                      <p className="text-sm text-dark whitespace-pre-wrap line-clamp-3 leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                      <p className="text-sm text-text whitespace-pre-wrap line-clamp-3 leading-relaxed" style={{ fontFamily: 'inherit' }}>
                         {session.notes}
                       </p>
                     </div>
                     {session.supervisor_feedback && (
-                      <div className="mt-4 p-3.5 rounded-lg bg-sky-50 border border-sky-200">
-                        <p className="text-xs font-semibold text-sky-800 mb-1.5" style={{ fontFamily: 'inherit' }}>
+                      <div className="mt-4 p-3.5 rounded-lg bg-primary-muted border border-border-strong">
+                        <p className="text-xs font-semibold text-on-tint-strong mb-1.5" style={{ fontFamily: 'inherit' }}>
                           ملاحظات المشرف السابقة:
                         </p>
-                        <p className="text-sm text-sky-900 leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                        <p className="text-sm text-on-tint-deep leading-relaxed" style={{ fontFamily: 'inherit' }}>
                           {session.supervisor_feedback}
                         </p>
                       </div>
                     )}
-                    <p className="text-xs text-dark-lighter mt-4" style={{ fontFamily: 'inherit' }}>
+                    <p className="text-xs text-text-secondary mt-4" style={{ fontFamily: 'inherit' }}>
                       {new Date(session.created_at).toLocaleDateString('ar-SA', {
                         year: 'numeric',
                         month: 'short',
@@ -285,7 +285,7 @@ export default function SessionsPage() {
                         setReviewStatus('approved');
                         setShowReviewModal(true);
                       }}
-                      className="flex items-center justify-center gap-2 rounded-lg bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/20"
+                      className="flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20"
                       style={{ fontFamily: 'inherit' }}
                     >
                       <CheckCircleIcon className="h-5 w-5" />
@@ -297,7 +297,7 @@ export default function SessionsPage() {
                         setReviewStatus('rejected');
                         setShowReviewModal(true);
                       }}
-                      className="flex items-center justify-center gap-2 rounded-lg bg-dark-lighter px-4 py-2.5 text-sm font-semibold text-white hover:bg-dark transition-colors focus:outline-none focus:ring-2 focus:ring-dark-lighter/20"
+                      className="flex items-center justify-center gap-2 rounded-lg bg-dark-lighter px-4 py-2.5 text-sm font-semibold text-light hover:bg-dark transition-colors focus:outline-none focus:ring-2 focus:ring-dark-lighter/20"
                       style={{ fontFamily: 'inherit' }}
                     >
                       <XCircleIcon className="h-5 w-5" />
@@ -305,7 +305,7 @@ export default function SessionsPage() {
                     </button>
                     <Link
                       href={`/dashboard/cases/${session.case}`}
-                      className="text-center rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm font-medium text-dark hover:bg-sky-50 hover:border-sky-300 transition-all focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                      className="text-center rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm font-medium text-text hover:bg-primary-muted hover:border-border-hover transition-all focus:outline-none focus:ring-2 focus:ring-ring/20"
                       style={{ fontFamily: 'inherit' }}
                     >
                       عرض الحالة
@@ -321,39 +321,39 @@ export default function SessionsPage() {
       {/* Review Modal */}
       {showReviewModal && selectedSession && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 shadow-xl p-6 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-lg sm:text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border shadow-xl p-6 max-h-[90vh] overflow-y-auto">
+            <h3 className="text-lg sm:text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
               {reviewStatus === 'approved' ? 'موافقة على الجلسة' : 'رفض الجلسة'}
             </h3>
 
             {/* Session Details */}
             <div className="mb-5 space-y-4">
               <div>
-                <p className="text-sm font-semibold text-dark-lighter mb-1.5" style={{ fontFamily: 'inherit' }}>
+                <p className="text-sm font-semibold text-text-secondary mb-1.5" style={{ fontFamily: 'inherit' }}>
                   الحالة:
                 </p>
                 <Link
                   href={`/dashboard/cases/${selectedSession.case}`}
-                  className="text-sm font-semibold text-dark hover:text-sky-600 transition-colors"
+                  className="text-sm font-semibold text-text hover:text-link transition-colors"
                   style={{ fontFamily: 'inherit' }}
                 >
                   {selectedSession.case_title || 'حالة سريرية'}
                 </Link>
               </div>
               <div>
-                <p className="text-sm font-semibold text-dark-lighter mb-1.5" style={{ fontFamily: 'inherit' }}>
+                <p className="text-sm font-semibold text-text-secondary mb-1.5" style={{ fontFamily: 'inherit' }}>
                   الطالب:
                 </p>
-                <p className="text-sm text-dark" style={{ fontFamily: 'inherit' }}>
+                <p className="text-sm text-text" style={{ fontFamily: 'inherit' }}>
                   {selectedSession.student?.first_name} {selectedSession.student?.last_name}
                 </p>
               </div>
               <div>
-                <p className="text-sm font-semibold text-dark-lighter mb-1.5" style={{ fontFamily: 'inherit' }}>
+                <p className="text-sm font-semibold text-text-secondary mb-1.5" style={{ fontFamily: 'inherit' }}>
                   ملاحظات الطالب:
                 </p>
-                <div className="p-3.5 rounded-lg bg-sky-50 border border-sky-200">
-                  <p className="text-sm text-dark whitespace-pre-wrap leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                <div className="p-3.5 rounded-lg bg-primary-muted border border-border-strong">
+                  <p className="text-sm text-text whitespace-pre-wrap leading-relaxed" style={{ fontFamily: 'inherit' }}>
                     {selectedSession.notes}
                   </p>
                 </div>
@@ -362,15 +362,15 @@ export default function SessionsPage() {
 
             {/* Feedback */}
             <div className="mb-5">
-              <label className="block text-sm font-semibold text-dark mb-2.5" style={{ fontFamily: 'inherit' }}>
-                ملاحظات المشرف {reviewStatus === 'rejected' && <span className="text-sky-600">(مطلوب)</span>}
+              <label className="block text-sm font-semibold text-text mb-2.5" style={{ fontFamily: 'inherit' }}>
+                ملاحظات المشرف {reviewStatus === 'rejected' && <span className="text-link">(مطلوب)</span>}
               </label>
               <textarea
                 value={sessionFeedback}
                 onChange={(e) => setSessionFeedback(e.target.value)}
                 rows={5}
                 required={reviewStatus === 'rejected'}
-                className="w-full rounded-lg border border-sky-200 bg-white px-4 py-3 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all"
+                className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all"
                 style={{ fontFamily: 'inherit' }}
                 placeholder={
                   reviewStatus === 'approved'
@@ -385,9 +385,9 @@ export default function SessionsPage() {
               <button
                 onClick={handleReviewSession}
                 disabled={reviewStatus === 'rejected' && !sessionFeedback.trim()}
-                className={`flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-colors focus:outline-none focus:ring-2 ${
+                className={`flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-light transition-colors focus:outline-none focus:ring-2 ${
                   reviewStatus === 'approved'
-                    ? 'bg-sky-500 hover:bg-sky-600 focus:ring-sky-500/20'
+                    ? 'bg-primary hover:bg-primary-hover focus:ring-primary/20'
                     : 'bg-dark-lighter hover:bg-dark focus:ring-dark-lighter/20'
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
                 style={{ fontFamily: 'inherit' }}
@@ -410,7 +410,7 @@ export default function SessionsPage() {
                   setSelectedSession(null);
                   setSessionFeedback('');
                 }}
-                className="flex-1 rounded-lg border border-sky-200 bg-white px-4 py-2.5 text-sm font-medium text-dark hover:bg-sky-50 hover:border-sky-300 transition-all focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="flex-1 rounded-lg border border-border-strong bg-surface px-4 py-2.5 text-sm font-medium text-text hover:bg-primary-muted hover:border-border-hover transition-all focus:outline-none focus:ring-2 focus:ring-ring/20"
                 style={{ fontFamily: 'inherit' }}
               >
                 إلغاء

@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { getCurrentUser, initializeAuth } from '@/store/slices/authSlice';
 import DashboardLayout from '@/components/Layout/DashboardLayout';
+import PageLoader from '@/components/Layout/PageLoader';
 
 // Layout مشترك لجميع صفحات الداشبورد
 // هذا Layout يطبق DashboardLayout (Sidebar + Header) على جميع الصفحات الفرعية
@@ -36,74 +37,20 @@ export default function Layout({ children }) {
     }
   }, [dispatch, mounted, initialized, isAuthenticated]);
 
-  // على الخادم، عرض نفس البنية (بدون محتوى حقيقي)
-  if (!mounted) {
-    return (
-      <div className="flex h-screen overflow-hidden bg-light-gray">
-        <div className="flex h-screen w-64 flex-col bg-dark border-l border-dark-light">
-          <div className="flex h-16 items-center justify-center border-b border-dark-light px-4">
-            <h1 className="text-xl font-bold text-light">MediSmile</h1>
-          </div>
-        </div>
-        <div className="flex flex-1 flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto p-6">
-            <div className="flex items-center justify-center min-h-[400px]">
-              <div className="text-center">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-                <p className="mt-4 text-sm text-dark-lighter">جاري التحميل...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const pending = !mounted || !initialized || loading || !isAuthenticated;
 
-  // عرض شاشة تحميل أثناء التحقق من المصادقة
-  if (!initialized || loading) {
-    return (
-      <div className="flex h-screen overflow-hidden bg-light-gray">
-        <div className="flex h-screen w-64 flex-col bg-dark border-l border-dark-light">
-          <div className="flex h-16 items-center justify-center border-b border-dark-light px-4">
-            <h1 className="text-xl font-bold text-light">MediSmile</h1>
+  return (
+    <>
+      {pending ? (
+        <div className="hidden lg:flex fixed inset-y-0 right-0 h-screen w-64 flex-col bg-surface border-l border-border">
+          <div className="flex h-16 items-center justify-center border-b border-border px-4">
+            <h1 className="text-xl font-bold text-text">MediSmile</h1>
           </div>
         </div>
-        <div className="flex flex-1 flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto p-6">
-            <div className="flex items-center justify-center min-h-[400px]">
-              <div className="text-center">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-                <p className="mt-4 text-sm text-dark-lighter">جاري التحميل...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // إذا لم يكن مسجل دخول، لا تعرض المحتوى (سيتم إعادة التوجيه)
-  if (!isAuthenticated) {
-    return (
-      <div className="flex h-screen overflow-hidden bg-light-gray">
-        <div className="flex h-screen w-64 flex-col bg-dark border-l border-dark-light">
-          <div className="flex h-16 items-center justify-center border-b border-dark-light px-4">
-            <h1 className="text-xl font-bold text-light">MediSmile</h1>
-          </div>
-        </div>
-        <div className="flex flex-1 flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto p-6">
-            <div className="flex items-center justify-center min-h-[400px]">
-              <div className="text-center">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-                <p className="mt-4 text-sm text-dark-lighter">جاري التحميل...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return <DashboardLayout>{children}</DashboardLayout>;
+      ) : (
+        <DashboardLayout>{children}</DashboardLayout>
+      )}
+      <PageLoader loading={pending} hasSidebar />
+    </>
+  );
 }

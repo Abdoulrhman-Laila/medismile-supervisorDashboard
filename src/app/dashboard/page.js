@@ -37,7 +37,7 @@ export default function DashboardPage() {
       name: 'الحالات المشرف عليها',
       value: Array.isArray(cases) ? cases.length : 0,
       icon: FolderIcon,
-      color: 'bg-sky-500',
+      color: 'bg-primary',
       href: '/dashboard/cases',
     },
     {
@@ -46,21 +46,21 @@ export default function DashboardPage() {
         ? assignmentRequests.filter((r) => r.status === 'pending').length 
         : 0,
       icon: DocumentTextIcon,
-      color: 'bg-sky-400',
+      color: 'bg-accent',
       href: '/dashboard/cases?tab=assignments',
     },
     {
       name: 'جلسات تحتاج مراجعة',
       value: Array.isArray(sessionsNeedingReview) ? sessionsNeedingReview.length : 0,
       icon: ClipboardDocumentCheckIcon,
-      color: 'bg-sky-600',
+      color: 'bg-primary-hover',
       href: '/dashboard/sessions?status=needs_review',
     },
     {
       name: 'محتوى معلق للموافقة',
       value: Array.isArray(pendingContent) ? pendingContent.length : 0,
       icon: ChatBubbleLeftRightIcon,
-      color: 'bg-sky-500',
+      color: 'bg-primary',
       href: '/dashboard/content?status=pending',
     },
   ];
@@ -83,10 +83,10 @@ export default function DashboardPage() {
     <div className="space-y-6">
       {/* Page Header */}
       <div className="mb-2">
-        <h1 className="text-2xl sm:text-3xl font-bold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+        <h1 className="text-2xl sm:text-3xl font-bold text-text mb-2" style={{ fontFamily: 'inherit' }}>
           لوحة التحكم
         </h1>
-        <p className="text-sm sm:text-base text-dark-lighter leading-relaxed" style={{ fontFamily: 'inherit' }}>
+        <p className="text-sm sm:text-base text-text-secondary leading-relaxed" style={{ fontFamily: 'inherit' }}>
           نظرة عامة على الحالات والأنشطة
         </p>
       </div>
@@ -99,19 +99,19 @@ export default function DashboardPage() {
             <a
               key={stat.name}
               href={stat.href}
-              className="group relative overflow-hidden rounded-lg bg-white border border-sky-100 p-5 sm:p-6 hover:shadow-md hover:border-sky-200 transition-all duration-200"
+              className="group relative overflow-hidden rounded-lg bg-surface border border-border p-5 sm:p-6 hover:shadow-md hover:border-border-strong transition-all duration-200"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-dark-lighter mb-2" style={{ fontFamily: 'inherit' }}>
+                  <p className="text-sm font-medium text-text-secondary mb-2" style={{ fontFamily: 'inherit' }}>
                     {stat.name}
                   </p>
-                  <p className="text-2xl sm:text-3xl font-bold text-dark" style={{ fontFamily: 'inherit' }}>
+                  <p className="text-2xl sm:text-3xl font-bold text-text" style={{ fontFamily: 'inherit' }}>
                     {stat.value}
                   </p>
                 </div>
                 <div className={`${stat.color} rounded-lg p-3 flex-shrink-0 shadow-sm`}>
-                  <Icon className="h-6 w-6 text-white" />
+                  <Icon className="h-6 w-6 text-light" />
                 </div>
               </div>
             </a>
@@ -122,14 +122,14 @@ export default function DashboardPage() {
       {/* Charts Section */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Cases by Status */}
-        <div className="rounded-lg bg-white border border-sky-100 p-5 sm:p-6 shadow-sm">
-          <h2 className="text-lg sm:text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+        <div className="rounded-lg bg-surface border border-border p-5 sm:p-6 shadow-sm">
+          <h2 className="text-lg sm:text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
             توزيع الحالات
           </h2>
           <div className="space-y-4">
             {Object.entries(casesByStatus).map(([status, count]) => (
               <div key={status} className="flex items-center justify-between gap-3">
-                <span className="text-sm font-medium text-dark-lighter flex-shrink-0" style={{ fontFamily: 'inherit' }}>
+                <span className="text-sm font-medium text-text-secondary flex-shrink-0" style={{ fontFamily: 'inherit' }}>
                   {status === 'new' && 'جديدة'}
                   {status === 'pending_assignment' && 'في انتظار الإسناد'}
                   {status === 'assigned' && 'مُسندة'}
@@ -138,15 +138,15 @@ export default function DashboardPage() {
                   {status === 'closed' && 'مغلقة'}
                 </span>
                 <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <div className="h-2.5 flex-1 bg-sky-100 rounded-full overflow-hidden">
+                  <div className="h-2.5 flex-1 bg-tint rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-sky-500 rounded-full transition-all duration-300"
+                      className="h-full bg-primary rounded-full transition-all duration-300"
                       style={{
                         width: `${cases.length > 0 ? (count / cases.length) * 100 : 0}%`,
                       }}
                     />
                   </div>
-                  <span className="text-sm font-semibold text-dark w-8 text-left flex-shrink-0" style={{ fontFamily: 'inherit' }}>
+                  <span className="text-sm font-semibold text-text w-8 text-left flex-shrink-0" style={{ fontFamily: 'inherit' }}>
                     {count}
                   </span>
                 </div>
@@ -156,8 +156,8 @@ export default function DashboardPage() {
         </div>
 
         {/* Recent Activity */}
-        <div className="rounded-lg bg-white border border-sky-100 p-5 sm:p-6 shadow-sm">
-          <h2 className="text-lg sm:text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+        <div className="rounded-lg bg-surface border border-border p-5 sm:p-6 shadow-sm">
+          <h2 className="text-lg sm:text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
             الإشعارات الحديثة
           </h2>
           <div className="space-y-3">
@@ -167,18 +167,18 @@ export default function DashboardPage() {
                   key={notification.id}
                   className={`flex items-start gap-3 p-3.5 rounded-lg transition-colors ${
                     !notification.is_read 
-                      ? 'bg-sky-50 border border-sky-200' 
-                      : 'bg-light-gray border border-transparent'
+                      ? 'bg-primary-muted border border-border-strong' 
+                      : 'bg-background border border-transparent'
                   }`}
                 >
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-dark mb-1.5" style={{ fontFamily: 'inherit' }}>
+                    <p className="text-sm font-semibold text-text mb-1.5" style={{ fontFamily: 'inherit' }}>
                       {notification.title}
                     </p>
-                    <p className="text-xs text-dark-lighter leading-relaxed mb-2" style={{ fontFamily: 'inherit' }}>
+                    <p className="text-xs text-text-secondary leading-relaxed mb-2" style={{ fontFamily: 'inherit' }}>
                       {notification.message}
                     </p>
-                    <p className="text-xs text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+                    <p className="text-xs text-text-secondary" style={{ fontFamily: 'inherit' }}>
                       {new Date(notification.created_at).toLocaleDateString('ar-SA', {
                         year: 'numeric',
                         month: 'short',
@@ -189,13 +189,13 @@ export default function DashboardPage() {
                     </p>
                   </div>
                   {!notification.is_read && (
-                    <div className="h-2.5 w-2.5 rounded-full bg-sky-500 mt-1.5 flex-shrink-0" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                   )}
                 </div>
               ))
             ) : (
               <div className="text-center py-8">
-                <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+                <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
                   لا توجد إشعارات
                 </p>
               </div>

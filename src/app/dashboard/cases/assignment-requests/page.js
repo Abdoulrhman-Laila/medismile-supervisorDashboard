@@ -27,9 +27,9 @@ const statusLabels = {
 };
 
 const statusColors = {
-  pending: 'bg-yellow-100 text-yellow-800',
-  approved: 'bg-green-100 text-green-800',
-  rejected: 'bg-red-100 text-red-800',
+  pending: 'bg-warning-100 text-warning-800',
+  approved: 'bg-success-100 text-success-800',
+  rejected: 'bg-danger-100 text-danger-800',
 };
 
 const priorityLabels = {
@@ -40,10 +40,10 @@ const priorityLabels = {
 };
 
 const priorityColors = {
-  low: 'bg-sky-100 text-sky-700',
-  medium: 'bg-sky-200 text-sky-800',
-  high: 'bg-sky-300 text-sky-900',
-  urgent: 'bg-sky-500 text-white',
+  low: 'bg-tint text-on-tint',
+  medium: 'bg-tint-strong text-on-tint-strong',
+  high: 'bg-accent-soft text-on-tint-deep',
+  urgent: 'bg-primary text-light',
 };
 
 export default function AssignmentRequestsPage() {
@@ -164,23 +164,23 @@ export default function AssignmentRequestsPage() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-sky-50">
+    <div className="min-h-screen bg-primary-muted">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-dark" style={{ fontFamily: 'inherit' }}>
+              <h1 className="text-3xl font-bold text-text" style={{ fontFamily: 'inherit' }}>
                 طلبات الإسناد
               </h1>
-              <p className="mt-2 text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+              <p className="mt-2 text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
                 إدارة طلبات الإسناد من الطلاب للحالات الطبية
               </p>
             </div>
             {pendingCount > 0 && (
-              <div className="flex items-center gap-2 rounded-full bg-yellow-100 px-4 py-2">
-                <ClockIcon className="h-5 w-5 text-yellow-800" />
-                <span className="text-sm font-semibold text-yellow-800" style={{ fontFamily: 'inherit' }}>
+              <div className="flex items-center gap-2 rounded-full bg-warning-100 px-4 py-2">
+                <ClockIcon className="h-5 w-5 text-warning-800" />
+                <span className="text-sm font-semibold text-warning-800" style={{ fontFamily: 'inherit' }}>
                   {pendingCount} طلب معلق
                 </span>
               </div>
@@ -191,13 +191,13 @@ export default function AssignmentRequestsPage() {
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
-              <MagnifyingGlassIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-dark-lighter" />
+              <MagnifyingGlassIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
               <input
                 type="text"
                 placeholder="ابحث عن طالب، بريد إلكتروني، أو حالة..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pr-10 pl-4 py-2.5 border border-sky-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent text-sm"
+                className="w-full pr-10 pl-4 py-2.5 border border-border-strong rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent text-sm"
                 style={{ fontFamily: 'inherit' }}
               />
             </div>
@@ -206,7 +206,7 @@ export default function AssignmentRequestsPage() {
             <div className="flex gap-2">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center gap-2 px-4 py-2.5 border border-sky-200 rounded-lg hover:bg-sky-50 transition-colors text-sm font-medium text-dark"
+                className="flex items-center gap-2 px-4 py-2.5 border border-border-strong rounded-lg hover:bg-primary-muted transition-colors text-sm font-medium text-text"
                 style={{ fontFamily: 'inherit' }}
               >
                 <FunnelIcon className="h-5 w-5" />
@@ -217,16 +217,16 @@ export default function AssignmentRequestsPage() {
 
           {/* Filter Options */}
           {showFilters && (
-            <div className="mt-4 p-4 bg-white rounded-lg border border-sky-200 shadow-sm">
+            <div className="mt-4 p-4 bg-surface rounded-lg border border-border-strong shadow-sm">
               <div className="flex flex-wrap gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+                  <label className="block text-sm font-medium text-text mb-2" style={{ fontFamily: 'inherit' }}>
                     الحالة
                   </label>
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="px-3 py-2 border border-sky-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 text-sm"
+                    className="px-3 py-2 border border-border-strong rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-sm"
                     style={{ fontFamily: 'inherit' }}
                   >
                     <option value="">الكل</option>
@@ -241,47 +241,47 @@ export default function AssignmentRequestsPage() {
         </div>
 
         {/* Requests List */}
-        <div className="bg-white rounded-lg border border-sky-100 shadow-sm overflow-hidden">
+        <div className="bg-surface rounded-lg border border-border shadow-sm overflow-hidden">
           {loading ? (
             <div className="p-12 text-center">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-sky-500"></div>
-              <p className="mt-4 text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+              <p className="mt-4 text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
                 جاري التحميل...
               </p>
             </div>
           ) : filteredRequests.length === 0 ? (
             <div className="p-12 text-center">
-              <FolderIcon className="mx-auto h-12 w-12 text-dark-lighter mb-4" />
-              <p className="text-base font-semibold text-dark" style={{ fontFamily: 'inherit' }}>
+              <FolderIcon className="mx-auto h-12 w-12 text-text-secondary mb-4" />
+              <p className="text-base font-semibold text-text" style={{ fontFamily: 'inherit' }}>
                 لا توجد طلبات إسناد
               </p>
-              <p className="mt-2 text-sm text-dark-lighter leading-relaxed" style={{ fontFamily: 'inherit' }}>
+              <p className="mt-2 text-sm text-text-secondary leading-relaxed" style={{ fontFamily: 'inherit' }}>
                 {statusFilter === 'pending'
                   ? 'لا توجد طلبات إسناد معلقة حالياً'
                   : 'لا توجد طلبات إسناد تطابق الفلترة المحددة'}
               </p>
             </div>
           ) : (
-            <div className="divide-y divide-sky-100">
+            <div className="divide-y divide-border">
               {filteredRequests.map((request) => (
                 <div
                   key={request.id}
-                  className="p-5 sm:p-6 hover:bg-sky-50 transition-colors"
+                  className="p-5 sm:p-6 hover:bg-primary-muted transition-colors"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       {/* Student Info */}
                       <div className="flex items-center gap-3 mb-3">
                         <div className="flex-shrink-0">
-                          <div className="h-10 w-10 rounded-full bg-sky-100 flex items-center justify-center">
-                            <UserIcon className="h-6 w-6 text-sky-600" />
+                          <div className="h-10 w-10 rounded-full bg-tint flex items-center justify-center">
+                            <UserIcon className="h-6 w-6 text-link" />
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-base sm:text-lg font-semibold text-dark" style={{ fontFamily: 'inherit' }}>
+                          <h3 className="text-base sm:text-lg font-semibold text-text" style={{ fontFamily: 'inherit' }}>
                             {request.student?.first_name} {request.student?.last_name}
                           </h3>
-                          <p className="text-xs sm:text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+                          <p className="text-xs sm:text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
                             {request.student?.email}
                           </p>
                         </div>
@@ -298,29 +298,29 @@ export default function AssignmentRequestsPage() {
                         const caseId = request.case || request.case_id;
                         const caseData = casesData[caseId];
                         return (
-                          <div className="mb-3 p-3 bg-sky-50 rounded-lg border border-sky-200">
+                          <div className="mb-3 p-3 bg-primary-muted rounded-lg border border-border-strong">
                             <div className="flex items-start justify-between gap-3">
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-2">
-                                  <FolderIcon className="h-4 w-4 text-sky-600 flex-shrink-0" />
+                                  <FolderIcon className="h-4 w-4 text-link flex-shrink-0" />
                                   <button
                                     onClick={() => router.push(`/dashboard/cases/${caseId}`)}
-                                    className="text-sm font-semibold text-dark hover:text-sky-600 transition-colors text-right"
+                                    className="text-sm font-semibold text-text hover:text-link transition-colors text-right"
                                     style={{ fontFamily: 'inherit' }}
                                   >
                                     {caseData?.title || 'جاري التحميل...'}
                                   </button>
                                 </div>
                                 {caseData?.description && (
-                                  <p className="text-xs text-dark-lighter line-clamp-2 mb-2 leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                                  <p className="text-xs text-text-secondary line-clamp-2 mb-2 leading-relaxed" style={{ fontFamily: 'inherit' }}>
                                     {caseData.description}
                                   </p>
                                 )}
-                                <div className="flex items-center gap-3 text-xs text-dark-lighter flex-wrap">
+                                <div className="flex items-center gap-3 text-xs text-text-secondary flex-wrap">
                                   {caseData?.patient && (
                                     <span style={{ fontFamily: 'inherit' }}>
                                       المريض:{' '}
-                                      <span className="font-medium text-dark">
+                                      <span className="font-medium text-text">
                                         {caseData.patient.first_name} {caseData.patient.last_name}
                                       </span>
                                     </span>
@@ -339,13 +339,13 @@ export default function AssignmentRequestsPage() {
 
                       {/* Message */}
                       {request.message && (
-                        <p className="text-sm text-dark-lighter mb-4 leading-relaxed" style={{ fontFamily: 'inherit' }}>
+                        <p className="text-sm text-text-secondary mb-4 leading-relaxed" style={{ fontFamily: 'inherit' }}>
                           {request.message}
                         </p>
                       )}
 
                       {/* Date */}
-                      <p className="text-xs text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+                      <p className="text-xs text-text-secondary" style={{ fontFamily: 'inherit' }}>
                         {new Date(request.created_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'short',
@@ -357,11 +357,11 @@ export default function AssignmentRequestsPage() {
 
                       {/* Supervisor Response (if exists) */}
                       {request.supervisor_response && (
-                        <div className="mt-3 p-3 bg-sky-50 rounded-lg border border-sky-200">
-                          <p className="text-xs font-semibold text-dark mb-1" style={{ fontFamily: 'inherit' }}>
+                        <div className="mt-3 p-3 bg-primary-muted rounded-lg border border-border-strong">
+                          <p className="text-xs font-semibold text-text mb-1" style={{ fontFamily: 'inherit' }}>
                             رد المشرف:
                           </p>
-                          <p className="text-sm text-dark-lighter" style={{ fontFamily: 'inherit' }}>
+                          <p className="text-sm text-text-secondary" style={{ fontFamily: 'inherit' }}>
                             {request.supervisor_response}
                           </p>
                         </div>
@@ -378,7 +378,7 @@ export default function AssignmentRequestsPage() {
                             setSupervisorResponse('');
                             setShowResponseModal(true);
                           }}
-                          className="flex items-center gap-2 rounded-lg bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 transition-colors"
+                          className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-colors"
                           style={{ fontFamily: 'inherit' }}
                         >
                           <CheckCircleIcon className="h-5 w-5" />
@@ -411,23 +411,23 @@ export default function AssignmentRequestsPage() {
       {showResponseModal && selectedRequest && (
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex min-h-screen items-center justify-center p-4">
-            <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={() => setShowResponseModal(false)}></div>
-            <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full p-6">
-              <h2 className="text-xl font-bold text-dark mb-4" style={{ fontFamily: 'inherit' }}>
+            <div className="fixed inset-0 bg-dark/50 transition-opacity" onClick={() => setShowResponseModal(false)}></div>
+            <div className="relative bg-surface rounded-lg shadow-xl max-w-md w-full p-6">
+              <h2 className="text-xl font-bold text-text mb-4" style={{ fontFamily: 'inherit' }}>
                 {responseAction === 'accepted' ? 'قبول' : 'رفض'} طلب الإسناد
               </h2>
-              <p className="text-sm text-dark-lighter mb-4" style={{ fontFamily: 'inherit' }}>
+              <p className="text-sm text-text-secondary mb-4" style={{ fontFamily: 'inherit' }}>
                 طالب: {selectedRequest.student?.first_name} {selectedRequest.student?.last_name}
               </p>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+                <label className="block text-sm font-medium text-text mb-2" style={{ fontFamily: 'inherit' }}>
                   رد المشرف (اختياري)
                 </label>
                 <textarea
                   value={supervisorResponse}
                   onChange={(e) => setSupervisorResponse(e.target.value)}
                   rows={4}
-                  className="w-full px-3 py-2 border border-sky-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 text-sm"
+                  className="w-full px-3 py-2 border border-border-strong rounded-lg focus:outline-none focus:ring-2 focus:ring-ring text-sm"
                   placeholder="أضف ملاحظات أو تعليقات..."
                   style={{ fontFamily: 'inherit' }}
                 />
@@ -439,16 +439,16 @@ export default function AssignmentRequestsPage() {
                     setSelectedRequest(null);
                     setSupervisorResponse('');
                   }}
-                  className="px-4 py-2 border border-sky-200 rounded-lg text-sm font-medium text-dark hover:bg-sky-50 transition-colors"
+                  className="px-4 py-2 border border-border-strong rounded-lg text-sm font-medium text-text hover:bg-primary-muted transition-colors"
                   style={{ fontFamily: 'inherit' }}
                 >
                   إلغاء
                 </button>
                 <button
                   onClick={handleRespondToRequest}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold text-white transition-colors ${
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold text-light transition-colors ${
                     responseAction === 'accepted'
-                      ? 'bg-sky-500 hover:bg-sky-600'
+                      ? 'bg-primary hover:bg-primary-hover'
                       : 'bg-dark-lighter hover:bg-dark'
                   }`}
                   style={{ fontFamily: 'inherit' }}

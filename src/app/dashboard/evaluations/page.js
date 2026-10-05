@@ -45,14 +45,14 @@ const statusLabels = {
 };
 
 const statusColors = {
-  draft: 'bg-sky-50 text-sky-700',
-  submitted: 'bg-sky-100 text-sky-800',
-  in_review: 'bg-sky-200 text-sky-800',
-  approved: 'bg-sky-500 text-white',
+  draft: 'bg-primary-muted text-on-tint',
+  submitted: 'bg-tint text-on-tint-strong',
+  in_review: 'bg-tint-strong text-on-tint-strong',
+  approved: 'bg-primary text-light',
   rejected: 'bg-dark-lighter text-light',
   adjusted: 'bg-orange-100 text-orange-700',
-  finalized: 'bg-sky-500 text-white',
-  final: 'bg-sky-500 text-white',
+  finalized: 'bg-primary text-light',
+  final: 'bg-primary text-light',
 };
 
 const typeLabels = {
@@ -340,10 +340,10 @@ export default function EvaluationsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-dark mb-2" style={{ fontFamily: 'inherit' }}>
+          <h1 className="text-2xl sm:text-3xl font-bold text-text mb-2" style={{ fontFamily: 'inherit' }}>
             إدارة التقييمات
           </h1>
-          <p className="text-sm sm:text-base text-dark-lighter leading-relaxed" style={{ fontFamily: 'inherit' }}>
+          <p className="text-sm sm:text-base text-text-secondary leading-relaxed" style={{ fontFamily: 'inherit' }}>
             عرض وإدارة جميع التقييمات الأكاديمية للطلاب
           </p>
         </div>
@@ -359,7 +359,7 @@ export default function EvaluationsPage() {
             });
             setShowCreateModal(true);
           }}
-          className="flex items-center gap-2.5 rounded-lg bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+          className="flex items-center gap-2.5 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
         >
           <PlusIcon className="h-5 w-5" />
           تقييم جديد
@@ -368,54 +368,54 @@ export default function EvaluationsPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">إجمالي التقييمات</p>
-              <p className="text-2xl font-bold text-dark">{stats.total}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">إجمالي التقييمات</p>
+              <p className="text-2xl font-bold text-text">{stats.total}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center">
-                <DocumentTextIcon className="h-6 w-6 text-sky-500" />
+              <div className="h-10 w-10 rounded-lg bg-tint flex items-center justify-center">
+                <DocumentTextIcon className="h-6 w-6 text-primary" />
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">مُنشأة</p>
-              <p className="text-2xl font-bold text-dark">{stats.created}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">مُنشأة</p>
+              <p className="text-2xl font-bold text-text">{stats.created}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-50 flex items-center justify-center">
-                <div className="h-5 w-5 rounded-full bg-sky-400"></div>
+              <div className="h-10 w-10 rounded-lg bg-primary-muted flex items-center justify-center">
+                <div className="h-5 w-5 rounded-full bg-accent"></div>
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">معدلة</p>
-              <p className="text-2xl font-bold text-dark">{stats.adjusted}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">معدلة</p>
+              <p className="text-2xl font-bold text-text">{stats.adjusted}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center">
-                <div className="h-5 w-5 rounded-full bg-sky-500"></div>
+              <div className="h-10 w-10 rounded-lg bg-tint flex items-center justify-center">
+                <div className="h-5 w-5 rounded-full bg-primary"></div>
               </div>
             </div>
           </div>
         </div>
-        <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+        <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-dark-lighter mb-1">نهائية</p>
-              <p className="text-2xl font-bold text-dark">{stats.finalized}</p>
+              <p className="text-sm font-medium text-text-secondary mb-1">نهائية</p>
+              <p className="text-2xl font-bold text-text">{stats.finalized}</p>
             </div>
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center">
-                <div className="h-5 w-5 rounded-full bg-sky-500"></div>
+              <div className="h-10 w-10 rounded-lg bg-tint flex items-center justify-center">
+                <div className="h-5 w-5 rounded-full bg-primary"></div>
               </div>
             </div>
           </div>
@@ -423,26 +423,26 @@ export default function EvaluationsPage() {
       </div>
 
       {/* Search and Filters */}
-      <div className="rounded-lg bg-white border border-sky-100 p-5 shadow-sm">
+      <div className="rounded-lg bg-surface border border-border p-5 shadow-sm">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* Search */}
           <div className="relative flex-1 max-w-md">
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <MagnifyingGlassIcon className="h-5 w-5 text-dark-lighter" />
+              <MagnifyingGlassIcon className="h-5 w-5 text-text-secondary" />
             </div>
             <input
               type="text"
               placeholder="ابحث عن تقييم..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 pr-10 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+              className="block w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 pr-10 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
             />
           </div>
 
           {/* Filter Toggle */}
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-2 rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-100 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+            className="flex items-center gap-2 rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm font-semibold text-text hover:bg-tint-hover hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
           >
             <FunnelIcon className="h-5 w-5" />
             فلترة
@@ -451,15 +451,15 @@ export default function EvaluationsPage() {
 
         {/* Filters Panel */}
         {showFilters && (
-          <div className="mt-5 pt-5 grid grid-cols-1 gap-4 border-t border-sky-100 md:grid-cols-3">
+          <div className="mt-5 pt-5 grid grid-cols-1 gap-4 border-t border-border md:grid-cols-3">
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">الحالة</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">الحالة</label>
               <select
                 value={localFilters.status}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, status: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               >
                 <option value="">جميع الحالات</option>
                 {Object.entries(statusLabels).map(([value, label]) => (
@@ -470,13 +470,13 @@ export default function EvaluationsPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">نوع الهدف</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">نوع الهدف</label>
               <select
                 value={localFilters.type}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, type: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               >
                 <option value="">جميع الأنواع</option>
                 <option value="case">حالة سريرية</option>
@@ -487,13 +487,13 @@ export default function EvaluationsPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-dark mb-2.5">الحالة السريرية</label>
+              <label className="block text-sm font-semibold text-text mb-2.5">الحالة السريرية</label>
               <select
                 value={localFilters.case_id}
                 onChange={(e) =>
                   setLocalFilters({ ...localFilters, case_id: e.target.value })
                 }
-                className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
               >
                 <option value="">جميع الحالات</option>
                 {cases.map((caseItem) => (
@@ -508,33 +508,33 @@ export default function EvaluationsPage() {
       </div>
 
       {/* Evaluations List */}
-      <div className="rounded-lg bg-white border border-sky-100 overflow-hidden shadow-sm">
+      <div className="rounded-lg bg-surface border border-border overflow-hidden shadow-sm">
         {loading ? (
           <div className="p-12 text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-            <p className="mt-4 text-base font-semibold text-dark-lighter leading-relaxed">جاري تحميل التقييمات...</p>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+            <p className="mt-4 text-base font-semibold text-text-secondary leading-relaxed">جاري تحميل التقييمات...</p>
           </div>
         ) : filteredEvaluations.length === 0 ? (
           <div className="p-12 text-center">
-            <DocumentTextIcon className="mx-auto h-12 w-12 text-dark-lighter" />
-            <p className="mt-4 text-base font-semibold text-dark leading-relaxed">لا توجد تقييمات</p>
-            <p className="mt-2 text-sm text-dark-lighter leading-relaxed">
+            <DocumentTextIcon className="mx-auto h-12 w-12 text-text-secondary" />
+            <p className="mt-4 text-base font-semibold text-text leading-relaxed">لا توجد تقييمات</p>
+            <p className="mt-2 text-sm text-text-secondary leading-relaxed">
               {searchTerm || localFilters.status || localFilters.type || localFilters.case_id
                 ? 'لا توجد تقييمات تطابق معايير البحث'
                 : 'لم يتم إنشاء أي تقييمات بعد'}
             </p>
           </div>
         ) : (
-          <div className="divide-y divide-sky-100">
+          <div className="divide-y divide-border">
             {filteredEvaluations.map((evaluation) => (
               <div
                 key={evaluation.id}
-                className="p-5 sm:p-6 hover:bg-sky-50 transition-colors"
+                className="p-5 sm:p-6 hover:bg-primary-muted transition-colors"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-3 flex-wrap">
-                      <h3 className="text-lg font-semibold text-dark leading-relaxed">
+                      <h3 className="text-lg font-semibold text-text leading-relaxed">
                         تقييم {evaluation.target_type === 'case' ? 'حالة' : 
                                evaluation.target_type === 'session' ? 'جلسة' : 
                                evaluation.target_type === 'appointment' ? 'موعد' : 
@@ -547,7 +547,7 @@ export default function EvaluationsPage() {
                       >
                         {statusLabels[evaluation.status] || evaluation.status}
                       </span>
-                      <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-medium text-sky-700 whitespace-nowrap">
+                      <span className="rounded-full bg-tint px-3 py-1 text-xs font-medium text-on-tint whitespace-nowrap">
                         {evaluation.target_type === 'case' ? 'حالة سريرية' : 
                          evaluation.target_type === 'session' ? 'جلسة' : 
                          evaluation.target_type === 'appointment' ? 'موعد' : 
@@ -565,19 +565,19 @@ export default function EvaluationsPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                       {evaluation.case && (
-                        <div className="flex items-center gap-2 text-sm text-dark-lighter">
-                          <DocumentTextIcon className="h-5 w-5 text-sky-500 flex-shrink-0" />
+                        <div className="flex items-center gap-2 text-sm text-text-secondary">
+                          <DocumentTextIcon className="h-5 w-5 text-primary flex-shrink-0" />
                           <Link
                             href={`/dashboard/cases/${evaluation.case}`}
-                            className="hover:text-sky-600 transition-colors truncate"
+                            className="hover:text-link transition-colors truncate"
                           >
                             {cases.find(c => c.id === evaluation.case)?.title || `حالة ${evaluation.case.substring(0, 8)}...`}
                           </Link>
                         </div>
                       )}
                       {evaluation.student && (
-                        <div className="flex items-center gap-2 text-sm text-dark-lighter">
-                          <UserIcon className="h-5 w-5 text-sky-500 flex-shrink-0" />
+                        <div className="flex items-center gap-2 text-sm text-text-secondary">
+                          <UserIcon className="h-5 w-5 text-primary flex-shrink-0" />
                           <span className="truncate">
                             {students.find(s => s.id === evaluation.student)?.first_name && students.find(s => s.id === evaluation.student)?.last_name
                               ? `${students.find(s => s.id === evaluation.student).first_name} ${students.find(s => s.id === evaluation.student).last_name}`
@@ -589,20 +589,20 @@ export default function EvaluationsPage() {
 
                     {/* النقاط */}
                     <div className="grid grid-cols-2 gap-4 mt-4">
-                      <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-3">
-                        <p className="text-xs text-dark-lighter mb-1">النقاط الأصلية</p>
-                        <p className="text-lg font-bold text-dark">{evaluation.original_score !== undefined ? evaluation.original_score : 'N/A'}</p>
+                      <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-3">
+                        <p className="text-xs text-text-secondary mb-1">النقاط الأصلية</p>
+                        <p className="text-lg font-bold text-text">{evaluation.original_score !== undefined ? evaluation.original_score : 'N/A'}</p>
                       </div>
-                      <div className="rounded-lg bg-green-50 border-2 border-green-200 p-3">
-                        <p className="text-xs text-dark-lighter mb-1">النقاط النهائية</p>
-                        <p className="text-lg font-bold text-green-700">{evaluation.final_score !== undefined ? evaluation.final_score : evaluation.original_score || 'N/A'}</p>
+                      <div className="rounded-lg bg-success-50 border-2 border-success-200 p-3">
+                        <p className="text-xs text-text-secondary mb-1">النقاط النهائية</p>
+                        <p className="text-lg font-bold text-success-700">{evaluation.final_score !== undefined ? evaluation.final_score : evaluation.original_score || 'N/A'}</p>
                       </div>
                     </div>
 
                     {evaluation.comment && evaluation.comment.trim() && (
-                      <div className="mt-4 rounded-lg bg-gray-50 border-2 border-gray-200 p-3">
-                        <p className="text-xs font-semibold text-dark-lighter mb-1">التعليق</p>
-                        <p className="text-sm text-dark leading-relaxed">{evaluation.comment}</p>
+                      <div className="mt-4 rounded-lg bg-background border-2 border-border-strong p-3">
+                        <p className="text-xs font-semibold text-text-secondary mb-1">التعليق</p>
+                        <p className="text-sm text-text leading-relaxed">{evaluation.comment}</p>
                       </div>
                     )}
 
@@ -619,7 +619,7 @@ export default function EvaluationsPage() {
                     )}
 
                     {evaluation.created_at && (
-                      <p className="mt-3 text-xs text-dark-lighter">
+                      <p className="mt-3 text-xs text-text-secondary">
                         {new Date(evaluation.created_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'short',
@@ -633,7 +633,7 @@ export default function EvaluationsPage() {
                     {/* زر عرض التفاصيل - متاح دائماً */}
                     <button
                       onClick={() => handleViewDetails(evaluation.id)}
-                      className="flex items-center gap-2 rounded-lg border-2 border-sky-200 bg-white px-3 py-2 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                      className="flex items-center gap-2 rounded-lg border-2 border-border-strong bg-surface px-3 py-2 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
                     >
                       <EyeIcon className="h-4 w-4" />
                       التفاصيل
@@ -644,14 +644,14 @@ export default function EvaluationsPage() {
                       <>
                         <button
                           onClick={() => handleEditClick(evaluation)}
-                          className="flex items-center gap-2 rounded-lg border-2 border-sky-200 bg-white px-3 py-2 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                          className="flex items-center gap-2 rounded-lg border-2 border-border-strong bg-surface px-3 py-2 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
                         >
                           <PencilIcon className="h-4 w-4" />
                           تعديل
                         </button>
                         <button
                           onClick={() => handleSubmitEvaluation(evaluation.id)}
-                          className="flex items-center gap-2 rounded-lg bg-sky-400 px-3 py-2 text-sm font-semibold text-white hover:bg-sky-500 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/30"
+                          className="flex items-center gap-2 rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-light hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring/30"
                         >
                           <CheckCircleIcon className="h-4 w-4" />
                           تقديم
@@ -684,7 +684,7 @@ export default function EvaluationsPage() {
                     {evaluation.status === 'submitted' && user?.role === 'university_admin' && (
                       <button
                         onClick={() => handleFinalizeEvaluation(evaluation.id)}
-                        className="flex items-center gap-2 rounded-lg bg-sky-500 px-3 py-2 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+                        className="flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
                       >
                         <CheckCircleIcon className="h-4 w-4" />
                         اعتماد
@@ -695,7 +695,7 @@ export default function EvaluationsPage() {
                     {evaluation.student && (
                       <button
                         onClick={() => handleViewStatistics(evaluation.student)}
-                        className="flex items-center gap-2 rounded-lg border-2 border-sky-300 bg-sky-50 px-3 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-100 hover:border-sky-400 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                        className="flex items-center gap-2 rounded-lg border-2 border-border-hover bg-primary-muted px-3 py-2 text-sm font-semibold text-on-tint hover:bg-tint-hover hover:border-ring transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
                       >
                         <AcademicCapIcon className="h-4 w-4" />
                         إحصائيات
@@ -712,19 +712,19 @@ export default function EvaluationsPage() {
       {/* Create Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>إنشاء تقييم جديد</h3>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>إنشاء تقييم جديد</h3>
 
             <div className="space-y-5">
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  الطالب <span className="text-sky-600">*</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  الطالب <span className="text-link">*</span>
                 </label>
                 <select
                   value={formData.student_id}
                   onChange={(e) => setFormData({ ...formData, student_id: e.target.value })}
                   required
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                 >
                   <option value="">اختر الطالب</option>
                   {students.map((student) => (
@@ -736,8 +736,8 @@ export default function EvaluationsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  نوع الهدف <span className="text-sky-600">*</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  نوع الهدف <span className="text-link">*</span>
                 </label>
                 <select
                   value={formData.target_type}
@@ -749,7 +749,7 @@ export default function EvaluationsPage() {
                     });
                   }}
                   required
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                 >
                   <option value="">اختر نوع الهدف</option>
                   <option value="case">حالة سريرية</option>
@@ -760,16 +760,16 @@ export default function EvaluationsPage() {
 
               {formData.target_type && (
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2.5">
+                  <label className="block text-sm font-semibold text-text mb-2.5">
                     {formData.target_type === 'case' ? 'الحالة السريرية' : 
                      formData.target_type === 'session' ? 'الجلسة' : 
-                     'الموعد'} <span className="text-sky-600">*</span>
+                     'الموعد'} <span className="text-link">*</span>
                   </label>
                   <select
                     value={formData.target_id}
                     onChange={(e) => setFormData({ ...formData, target_id: e.target.value })}
                     required
-                    className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                    className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                   >
                     <option value="">اختر {formData.target_type === 'case' ? 'الحالة' : formData.target_type === 'session' ? 'الجلسة' : 'الموعد'}</option>
                     {formData.target_type === 'case' && Array.isArray(cases) && cases.map((caseItem) => (
@@ -796,8 +796,8 @@ export default function EvaluationsPage() {
               )}
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
-                  النقاط <span className="text-sky-600">*</span>
+                <label className="block text-sm font-semibold text-text mb-2.5">
+                  النقاط <span className="text-link">*</span>
                 </label>
                 <input
                   type="number"
@@ -808,12 +808,12 @@ export default function EvaluationsPage() {
                   max="100"
                   step="0.1"
                   placeholder="أدخل النقاط (0-100)"
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
+                <label className="block text-sm font-semibold text-text mb-2.5">
                   التعليق (اختياري)
                 </label>
                 <textarea
@@ -821,7 +821,7 @@ export default function EvaluationsPage() {
                   onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
                   rows={4}
                   placeholder="أضف تعليقاً على التقييم..."
-                  className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200 resize-none"
+                  className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200 resize-none"
                 />
               </div>
             </div>
@@ -829,7 +829,7 @@ export default function EvaluationsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleCreateEvaluation}
-                className="flex-1 rounded-lg bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+                className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
               >
                 إنشاء
               </button>
@@ -845,7 +845,7 @@ export default function EvaluationsPage() {
                     comment: '',
                   });
                 }}
-                className="flex-1 rounded-lg border-2 border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="flex-1 rounded-lg border-2 border-border-strong bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
               >
                 إلغاء
               </button>
@@ -857,31 +857,31 @@ export default function EvaluationsPage() {
       {/* Edit Modal */}
       {showEditModal && selectedEvaluation && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>تعديل التقييم</h3>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>تعديل التقييم</h3>
 
             {selectedEvaluation.status === 'final' || selectedEvaluation.status === 'finalized' ? (
-              <div className="p-4 rounded-lg bg-sky-50 border-2 border-sky-200">
-                <p className="text-sm font-semibold text-sky-800">لا يمكن تعديل تقييم نهائي</p>
+              <div className="p-4 rounded-lg bg-primary-muted border-2 border-border-strong">
+                <p className="text-sm font-semibold text-on-tint-strong">لا يمكن تعديل تقييم نهائي</p>
               </div>
             ) : (
               <div className="space-y-5">
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2.5">
-                    نوع الهدف <span className="text-sky-600">*</span>
+                  <label className="block text-sm font-semibold text-text mb-2.5">
+                    نوع الهدف <span className="text-link">*</span>
                   </label>
                   <input
                     type="text"
                     value={formData.target_type}
                     onChange={(e) => setFormData({ ...formData, target_type: e.target.value })}
                     required
-                    className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                    className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-dark mb-2.5">
-                    النقاط <span className="text-sky-600">*</span>
+                  <label className="block text-sm font-semibold text-text mb-2.5">
+                    النقاط <span className="text-link">*</span>
                   </label>
                   <input
                     type="number"
@@ -890,7 +890,7 @@ export default function EvaluationsPage() {
                     required
                     min="0"
                     step="0.1"
-                    className="w-full rounded-lg border-2 border-sky-200 bg-sky-50 px-4 py-2.5 text-sm text-dark focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/20 transition-all duration-200"
+                    className="w-full rounded-lg border-2 border-border-strong bg-primary-muted px-4 py-2.5 text-sm text-text focus:border-ring focus:bg-surface focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all duration-200"
                   />
                 </div>
               </div>
@@ -900,7 +900,7 @@ export default function EvaluationsPage() {
               {selectedEvaluation.status !== 'final' && selectedEvaluation.status !== 'finalized' && (
                 <button
                   onClick={handleUpdateEvaluation}
-                  className="flex-1 rounded-lg bg-sky-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-sky-600 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+                  className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-light hover:bg-primary-hover transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30"
                 >
                   حفظ التغييرات
                 </button>
@@ -910,7 +910,7 @@ export default function EvaluationsPage() {
                   setShowEditModal(false);
                   setSelectedEvaluation(null);
                 }}
-                className="flex-1 rounded-lg border-2 border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="flex-1 rounded-lg border-2 border-border-strong bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
               >
                 إغلاق
               </button>
@@ -922,18 +922,18 @@ export default function EvaluationsPage() {
       {/* Statistics Modal */}
       {showStatisticsModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>تقييم أداء الطالب</h3>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>تقييم أداء الطالب</h3>
 
             {loading ? (
               <div className="flex items-center justify-center min-h-[200px]">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-                <p className="mr-4 text-base font-semibold text-dark-lighter leading-relaxed">جاري تحميل التقييم...</p>
+                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+                <p className="mr-4 text-base font-semibold text-text-secondary leading-relaxed">جاري تحميل التقييم...</p>
               </div>
             ) : studentRating ? (
               <div className="space-y-5">
                 {/* التقييم النهائي */}
-                <div className="rounded-lg bg-gradient-to-r from-sky-500 to-sky-600 border-2 border-sky-600 p-6 text-white">
+                <div className="rounded-lg bg-gradient-to-r from-primary to-primary-hover border-2 border-sky-600 p-6 text-light">
                   <p className="text-sm font-semibold mb-2 opacity-90">التقييم النهائي للطالب</p>
                   <p className="text-4xl font-bold">
                     {studentRating.final_rating !== undefined && studentRating.final_rating !== null 
@@ -948,7 +948,7 @@ export default function EvaluationsPage() {
                 {/* مكونات التقييم */}
                 {studentRating.components && Object.keys(studentRating.components).length > 0 && (
                   <div>
-                    <p className="text-sm font-semibold text-dark mb-4">مكونات التقييم</p>
+                    <p className="text-sm font-semibold text-text mb-4">مكونات التقييم</p>
                     <div className="space-y-3">
                       {Object.entries(studentRating.components).map(([role, data]) => {
                         const roleLabels = {
@@ -957,13 +957,13 @@ export default function EvaluationsPage() {
                           university_admin: 'تقييمات الجامعة',
                         };
                         const roleColors = {
-                          patient: 'bg-green-50 border-green-200 text-green-800',
-                          supervisor: 'bg-sky-50 border-sky-200 text-sky-800',
+                          patient: 'bg-success-50 border-success-200 text-success-800',
+                          supervisor: 'bg-primary-muted border-border-strong text-on-tint-strong',
                           university_admin: 'bg-purple-50 border-purple-200 text-purple-800',
                         };
                         
                         return (
-                          <div key={role} className={`rounded-lg border-2 p-4 ${roleColors[role] || 'bg-gray-50 border-gray-200'}`}>
+                          <div key={role} className={`rounded-lg border-2 p-4 ${roleColors[role] || 'bg-background border-border-strong'}`}>
                             <div className="flex items-center justify-between mb-2">
                               <p className="text-sm font-semibold">{roleLabels[role] || role}</p>
                               <span className="text-lg font-bold">
@@ -985,11 +985,11 @@ export default function EvaluationsPage() {
 
                 {/* معلومات إضافية */}
                 {selectedStudentId && (
-                  <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                    <p className="text-sm font-semibold text-dark mb-2">الطالب</p>
+                  <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                    <p className="text-sm font-semibold text-text mb-2">الطالب</p>
                     <div className="flex items-center gap-2">
-                      <UserIcon className="h-5 w-5 text-sky-500" />
-                      <p className="text-base font-medium text-dark">
+                      <UserIcon className="h-5 w-5 text-primary" />
+                      <p className="text-base font-medium text-text">
                         {students.find(s => s.id === selectedStudentId)?.first_name && students.find(s => s.id === selectedStudentId)?.last_name
                           ? `${students.find(s => s.id === selectedStudentId).first_name} ${students.find(s => s.id === selectedStudentId).last_name}`
                           : 'طالب غير معروف'}
@@ -1000,7 +1000,7 @@ export default function EvaluationsPage() {
               </div>
             ) : (
               <div className="p-12 text-center">
-                <p className="text-base font-semibold text-dark-lighter leading-relaxed">لا توجد بيانات تقييم متاحة</p>
+                <p className="text-base font-semibold text-text-secondary leading-relaxed">لا توجد بيانات تقييم متاحة</p>
               </div>
             )}
 
@@ -1010,7 +1010,7 @@ export default function EvaluationsPage() {
                   setShowStatisticsModal(false);
                   setSelectedStudentId(null);
                 }}
-                className="rounded-lg border-2 border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="rounded-lg border-2 border-border-strong bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
               >
                 إغلاق
               </button>
@@ -1022,35 +1022,35 @@ export default function EvaluationsPage() {
       {/* Adjust Evaluation Modal */}
       {showAdjustModal && selectedEvaluation && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
-            <h3 className="text-xl font-semibold text-dark mb-5" style={{ fontFamily: 'inherit' }}>
+          <div className="w-full max-w-2xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+            <h3 className="text-xl font-semibold text-text mb-5" style={{ fontFamily: 'inherit' }}>
               تعديل نقاط التقييم
             </h3>
 
             <div className="space-y-5">
               {/* معلومات التقييم الحالي */}
-              <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                <p className="text-sm font-semibold text-dark mb-2">معلومات التقييم الحالي:</p>
+              <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                <p className="text-sm font-semibold text-text mb-2">معلومات التقييم الحالي:</p>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-dark-lighter">الطالب: </span>
-                    <span className="font-medium text-dark">
+                    <span className="text-text-secondary">الطالب: </span>
+                    <span className="font-medium text-text">
                       {selectedEvaluation.student?.first_name} {selectedEvaluation.student?.last_name}
                     </span>
                   </div>
                   <div>
-                    <span className="text-dark-lighter">النقاط الحالية: </span>
-                    <span className="font-medium text-dark">
+                    <span className="text-text-secondary">النقاط الحالية: </span>
+                    <span className="font-medium text-text">
                       {selectedEvaluation.score || selectedEvaluation.original_score || 0}
                     </span>
                   </div>
                   <div>
-                    <span className="text-dark-lighter">نوع الهدف: </span>
-                    <span className="font-medium text-dark">{selectedEvaluation.target_type || 'غير محدد'}</span>
+                    <span className="text-text-secondary">نوع الهدف: </span>
+                    <span className="font-medium text-text">{selectedEvaluation.target_type || 'غير محدد'}</span>
                   </div>
                   <div>
-                    <span className="text-dark-lighter">الحالة: </span>
-                    <span className="font-medium text-dark">
+                    <span className="text-text-secondary">الحالة: </span>
+                    <span className="font-medium text-text">
                       {statusLabels[selectedEvaluation.status] || selectedEvaluation.status}
                     </span>
                   </div>
@@ -1059,7 +1059,7 @@ export default function EvaluationsPage() {
 
               {/* النقاط الجديدة */}
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
+                <label className="block text-sm font-semibold text-text mb-2.5">
                   النقاط الجديدة <span className="text-orange-600">*</span>
                 </label>
                 <input
@@ -1071,13 +1071,13 @@ export default function EvaluationsPage() {
                   max="100"
                   step="0.1"
                   placeholder="أدخل النقاط الجديدة (0-100)"
-                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200"
+                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200"
                 />
               </div>
 
               {/* السبب */}
               <div>
-                <label className="block text-sm font-semibold text-dark mb-2.5">
+                <label className="block text-sm font-semibold text-text mb-2.5">
                   سبب التعديل (اختياري)
                 </label>
                 <textarea
@@ -1085,7 +1085,7 @@ export default function EvaluationsPage() {
                   onChange={(e) => setAdjustFormData({ ...adjustFormData, reason: e.target.value })}
                   rows={4}
                   placeholder="أدخل سبب تعديل النقاط..."
-                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-dark placeholder-dark-lighter/60 focus:border-orange-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
+                  className="w-full rounded-lg border-2 border-orange-200 bg-orange-50 px-4 py-2.5 text-sm text-text placeholder-text-secondary/60 focus:border-orange-400 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-orange-400/20 transition-all duration-200 resize-none"
                 />
               </div>
             </div>
@@ -1093,7 +1093,7 @@ export default function EvaluationsPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={handleAdjustEvaluation}
-                className="flex-1 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
+                className="flex-1 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-semibold text-light hover:bg-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500/30"
               >
                 حفظ التعديل
               </button>
@@ -1103,7 +1103,7 @@ export default function EvaluationsPage() {
                   setSelectedEvaluation(null);
                   setAdjustFormData({ new_score: '', reason: '' });
                 }}
-                className="flex-1 rounded-lg border-2 border-orange-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-orange-50 hover:border-orange-300 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400/20"
+                className="flex-1 rounded-lg border-2 border-orange-200 bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-orange-50 hover:border-orange-300 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400/20"
               >
                 إلغاء
               </button>
@@ -1115,9 +1115,9 @@ export default function EvaluationsPage() {
       {/* Evaluation Detail Modal */}
       {showDetailModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/50 p-4">
-          <div className="w-full max-w-3xl rounded-lg bg-white border border-sky-100 p-6 max-h-[90vh] overflow-y-auto shadow-xl">
+          <div className="w-full max-w-3xl rounded-lg bg-surface border border-border p-6 max-h-[90vh] overflow-y-auto shadow-xl">
             <div className="flex items-center justify-between mb-5">
-              <h3 className="text-xl font-semibold text-dark" style={{ fontFamily: 'inherit' }}>
+              <h3 className="text-xl font-semibold text-text" style={{ fontFamily: 'inherit' }}>
                 تفاصيل التقييم
               </h3>
               <button
@@ -1125,22 +1125,22 @@ export default function EvaluationsPage() {
                   setShowDetailModal(false);
                   dispatch(clearCurrentEvaluation());
                 }}
-                className="rounded-lg p-2 hover:bg-sky-50 transition-colors"
+                className="rounded-lg p-2 hover:bg-primary-muted transition-colors"
               >
-                <XCircleIcon className="h-6 w-6 text-dark-lighter" />
+                <XCircleIcon className="h-6 w-6 text-text-secondary" />
               </button>
             </div>
 
             {loading ? (
               <div className="flex items-center justify-center min-h-[200px]">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-sky-500 border-r-transparent"></div>
-                <p className="mr-4 text-base font-semibold text-dark-lighter leading-relaxed">جاري تحميل التفاصيل...</p>
+                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+                <p className="mr-4 text-base font-semibold text-text-secondary leading-relaxed">جاري تحميل التفاصيل...</p>
               </div>
             ) : currentEvaluation ? (
               <div className="space-y-5">
                 {/* معلومات الطالب */}
                 {currentEvaluation.student && (
-                  <div className="rounded-lg bg-gradient-to-r from-sky-500 to-sky-600 border-2 border-sky-600 p-6 text-white">
+                  <div className="rounded-lg bg-gradient-to-r from-primary to-primary-hover border-2 border-sky-600 p-6 text-light">
                     <div className="flex items-center gap-3 mb-2">
                       <UserIcon className="h-8 w-8" />
                       <div>
@@ -1157,17 +1157,17 @@ export default function EvaluationsPage() {
 
                 {/* معلومات أساسية */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                    <p className="text-sm font-semibold text-dark-lighter mb-1">الحالة</p>
+                  <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                    <p className="text-sm font-semibold text-text-secondary mb-1">الحالة</p>
                     <span className={`inline-block rounded-full px-3 py-1 text-xs font-medium ${
                       statusColors[currentEvaluation.status] || statusColors.draft
                     }`}>
                       {statusLabels[currentEvaluation.status] || currentEvaluation.status}
                     </span>
                   </div>
-                  <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                    <p className="text-sm font-semibold text-dark-lighter mb-1">نوع الهدف</p>
-                    <p className="text-base font-medium text-dark">
+                  <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                    <p className="text-sm font-semibold text-text-secondary mb-1">نوع الهدف</p>
+                    <p className="text-base font-medium text-text">
                       {currentEvaluation.target_type === 'case' ? 'حالة سريرية' : 
                        currentEvaluation.target_type === 'session' ? 'جلسة' : 
                        currentEvaluation.target_type === 'appointment' ? 'موعد' : 
@@ -1175,9 +1175,9 @@ export default function EvaluationsPage() {
                     </p>
                   </div>
                   {currentEvaluation.evaluator_role && (
-                    <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                      <p className="text-sm font-semibold text-dark-lighter mb-1">دور المقيّم</p>
-                      <p className="text-base font-medium text-dark">
+                    <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                      <p className="text-sm font-semibold text-text-secondary mb-1">دور المقيّم</p>
+                      <p className="text-base font-medium text-text">
                         {currentEvaluation.evaluator_role === 'supervisor' ? 'مشرف' : 
                          currentEvaluation.evaluator_role === 'patient' ? 'مريض' : 
                          currentEvaluation.evaluator_role === 'university_admin' ? 'إدارة الجامعة' : 
@@ -1186,11 +1186,11 @@ export default function EvaluationsPage() {
                     </div>
                   )}
                   {currentEvaluation.case && (
-                    <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                      <p className="text-sm font-semibold text-dark-lighter mb-1">الحالة السريرية</p>
+                    <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                      <p className="text-sm font-semibold text-text-secondary mb-1">الحالة السريرية</p>
                       <Link
                         href={`/dashboard/cases/${currentEvaluation.case}`}
-                        className="text-base font-medium text-sky-600 hover:text-sky-700 hover:underline"
+                        className="text-base font-medium text-link hover:text-on-tint hover:underline"
                       >
                         {cases.find(c => c.id === currentEvaluation.case)?.title || 'عرض الحالة'}
                       </Link>
@@ -1199,18 +1199,18 @@ export default function EvaluationsPage() {
                 </div>
 
                 {/* النقاط */}
-                <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                  <p className="text-sm font-semibold text-dark-lighter mb-3">النقاط</p>
+                <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                  <p className="text-sm font-semibold text-text-secondary mb-3">النقاط</p>
                   <div className="grid grid-cols-2 gap-4">
                     {currentEvaluation.original_score !== undefined && (
                       <div>
-                        <p className="text-xs text-dark-lighter mb-1">النقاط الأصلية</p>
-                        <p className="text-lg font-bold text-dark">{currentEvaluation.original_score}</p>
+                        <p className="text-xs text-text-secondary mb-1">النقاط الأصلية</p>
+                        <p className="text-lg font-bold text-text">{currentEvaluation.original_score}</p>
                       </div>
                     )}
                     <div>
-                      <p className="text-xs text-dark-lighter mb-1">النقاط النهائية</p>
-                      <p className="text-lg font-bold text-sky-600">
+                      <p className="text-xs text-text-secondary mb-1">النقاط النهائية</p>
+                      <p className="text-lg font-bold text-link">
                         {currentEvaluation.final_score !== undefined ? currentEvaluation.final_score : currentEvaluation.score || 0}
                       </p>
                     </div>
@@ -1220,21 +1220,21 @@ export default function EvaluationsPage() {
 
                 {/* التعليق */}
                 {currentEvaluation.comment && (
-                  <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                    <p className="text-sm font-semibold text-dark-lighter mb-2">التعليق</p>
-                    <p className="text-sm text-dark leading-relaxed">{currentEvaluation.comment}</p>
+                  <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                    <p className="text-sm font-semibold text-text-secondary mb-2">التعليق</p>
+                    <p className="text-sm text-text leading-relaxed">{currentEvaluation.comment}</p>
                   </div>
                 )}
 
                 {/* Rubric */}
                 {currentEvaluation.rubric && Object.keys(currentEvaluation.rubric).length > 0 && (
-                  <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                    <p className="text-sm font-semibold text-dark-lighter mb-3">معايير التقييم</p>
+                  <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                    <p className="text-sm font-semibold text-text-secondary mb-3">معايير التقييم</p>
                     <div className="space-y-2">
                       {Object.entries(currentEvaluation.rubric).map(([key, value]) => (
                         <div key={key} className="flex items-center justify-between">
-                          <span className="text-sm text-dark-lighter">{key}:</span>
-                          <span className="text-sm font-medium text-dark">{value}</span>
+                          <span className="text-sm text-text-secondary">{key}:</span>
+                          <span className="text-sm font-medium text-text">{value}</span>
                         </div>
                       ))}
                     </div>
@@ -1244,9 +1244,9 @@ export default function EvaluationsPage() {
                 {/* التواريخ */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {currentEvaluation.created_at && (
-                    <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                      <p className="text-sm font-semibold text-dark-lighter mb-1">تاريخ الإنشاء</p>
-                      <p className="text-sm text-dark">
+                    <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                      <p className="text-sm font-semibold text-text-secondary mb-1">تاريخ الإنشاء</p>
+                      <p className="text-sm text-text">
                         {new Date(currentEvaluation.created_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'long',
@@ -1258,9 +1258,9 @@ export default function EvaluationsPage() {
                     </div>
                   )}
                   {currentEvaluation.updated_at && (
-                    <div className="rounded-lg bg-sky-50 border-2 border-sky-200 p-4">
-                      <p className="text-sm font-semibold text-dark-lighter mb-1">آخر تحديث</p>
-                      <p className="text-sm text-dark">
+                    <div className="rounded-lg bg-primary-muted border-2 border-border-strong p-4">
+                      <p className="text-sm font-semibold text-text-secondary mb-1">آخر تحديث</p>
+                      <p className="text-sm text-text">
                         {new Date(currentEvaluation.updated_at).toLocaleDateString('ar-SA', {
                           year: 'numeric',
                           month: 'long',
@@ -1275,7 +1275,7 @@ export default function EvaluationsPage() {
               </div>
             ) : (
               <div className="p-12 text-center">
-                <p className="text-base font-semibold text-dark-lighter leading-relaxed">لا توجد تفاصيل متاحة</p>
+                <p className="text-base font-semibold text-text-secondary leading-relaxed">لا توجد تفاصيل متاحة</p>
               </div>
             )}
 
@@ -1285,7 +1285,7 @@ export default function EvaluationsPage() {
                   setShowDetailModal(false);
                   dispatch(clearCurrentEvaluation());
                 }}
-                className="rounded-lg border-2 border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-dark hover:bg-sky-50 hover:border-sky-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400/20"
+                className="rounded-lg border-2 border-border-strong bg-surface px-4 py-2.5 text-sm font-semibold text-text hover:bg-primary-muted hover:border-border-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring/20"
               >
                 إغلاق
               </button>

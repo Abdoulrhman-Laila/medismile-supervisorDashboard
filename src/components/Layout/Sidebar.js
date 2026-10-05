@@ -82,7 +82,7 @@ export default function Sidebar({ isOpen = false, onClose }) {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex h-screen w-64 flex-col bg-white border-r border-sky-100 shadow-sm flex-shrink-0">
+      <aside className="hidden lg:flex h-screen w-64 flex-col bg-surface border-r border-border shadow-sm flex-shrink-0">
         {/* Navigation */}
         <nav className="flex-1 space-y-1 px-3 py-4 overflow-y-auto">
           {navigation.map((item) => {
@@ -98,23 +98,23 @@ export default function Sidebar({ isOpen = false, onClose }) {
                   group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 relative
                   ${
                     isActive
-                      ? 'bg-sky-50 text-sky-600 border-r-2 border-sky-500'
-                      : 'text-dark-lighter hover:bg-sky-50 hover:text-sky-600'
+                      ? 'bg-primary-muted text-link border-r-2 border-primary'
+                      : 'text-text-secondary hover:bg-primary-muted hover:text-link'
                   }
                 `}
                 style={{ fontFamily: 'inherit' }}
               >
                 <Icon className={`h-5 w-5 flex-shrink-0 transition-colors ${
                   isActive 
-                    ? 'text-sky-600' 
-                    : 'text-dark-lighter group-hover:text-sky-600'
+                    ? 'text-link' 
+                    : 'text-text-secondary group-hover:text-link'
                 }`} />
                 <span className="flex-1 text-right">{item.name}</span>
                 {item.name === 'الإشعارات' && unreadCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-sky-500 text-white' 
-                      : 'bg-sky-400 text-white'
+                      ? 'bg-primary text-light' 
+                      : 'bg-accent text-light'
                   } shadow-sm`}>
                     {unreadCount > 9 ? '9+' : unreadCount}
                   </span>
@@ -122,8 +122,8 @@ export default function Sidebar({ isOpen = false, onClose }) {
                 {item.name === 'المراسلة' && totalUnreadCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-sky-500 text-white' 
-                      : 'bg-sky-400 text-white'
+                      ? 'bg-primary text-light' 
+                      : 'bg-accent text-light'
                   } shadow-sm`}>
                     {totalUnreadCount > 9 ? '9+' : totalUnreadCount}
                   </span>
@@ -131,8 +131,8 @@ export default function Sidebar({ isOpen = false, onClose }) {
                 {item.name === 'الحالات الجديدة' && newCasesCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-orange-500 text-white' 
-                      : 'bg-orange-400 text-white'
+                      ? 'bg-orange-500 text-light' 
+                      : 'bg-orange-400 text-light'
                   } shadow-sm`}>
                     {newCasesCount > 9 ? '9+' : newCasesCount}
                   </span>
@@ -140,8 +140,8 @@ export default function Sidebar({ isOpen = false, onClose }) {
                 {item.name === 'طلبات الإسناد' && pendingAssignmentsCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-yellow-500 text-white' 
-                      : 'bg-yellow-400 text-white'
+                      ? 'bg-warning-500 text-light' 
+                      : 'bg-warning-400 text-light'
                   } shadow-sm`}>
                     {pendingAssignmentsCount > 9 ? '9+' : pendingAssignmentsCount}
                   </span>
@@ -155,16 +155,16 @@ export default function Sidebar({ isOpen = false, onClose }) {
       {/* Mobile Sidebar */}
       <aside
         className={`
-          fixed inset-y-0 right-0 z-50 w-64 bg-white border-r border-sky-100 shadow-xl transform transition-transform duration-300 ease-in-out lg:hidden
+          fixed inset-y-0 right-0 z-50 w-64 bg-surface border-r border-border shadow-xl transform transition-transform duration-300 ease-in-out lg:hidden
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
         {/* Mobile Header */}
-        <div className="flex items-center justify-between px-4 py-4 border-b border-sky-100">
-          <h2 className="text-lg font-bold text-dark" style={{ fontFamily: 'inherit' }}>القائمة</h2>
+        <div className="flex items-center justify-between px-4 py-4 border-b border-border">
+          <h2 className="text-lg font-bold text-text" style={{ fontFamily: 'inherit' }}>القائمة</h2>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-dark-lighter hover:bg-sky-50 hover:text-dark transition-colors"
+            className="p-2 rounded-lg text-text-secondary hover:bg-primary-muted hover:text-text transition-colors"
             aria-label="إغلاق القائمة"
           >
             <XMarkIcon className="h-6 w-6" />
@@ -186,23 +186,23 @@ export default function Sidebar({ isOpen = false, onClose }) {
                   group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 relative
                   ${
                     isActive
-                      ? 'bg-sky-50 text-sky-600 border-r-2 border-sky-500'
-                      : 'text-dark-lighter hover:bg-sky-50 hover:text-sky-600'
+                      ? 'bg-primary-muted text-link border-r-2 border-primary'
+                      : 'text-text-secondary hover:bg-primary-muted hover:text-link'
                   }
                 `}
                 style={{ fontFamily: 'inherit' }}
               >
                 <Icon className={`h-5 w-5 flex-shrink-0 transition-colors ${
                   isActive 
-                    ? 'text-sky-600' 
-                    : 'text-dark-lighter group-hover:text-sky-600'
+                    ? 'text-link' 
+                    : 'text-text-secondary group-hover:text-link'
                 }`} />
                 <span className="flex-1 text-right">{item.name}</span>
                 {item.name === 'الإشعارات' && unreadCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-sky-500 text-white' 
-                      : 'bg-sky-400 text-white'
+                      ? 'bg-primary text-light' 
+                      : 'bg-accent text-light'
                   } shadow-sm`}>
                     {unreadCount > 9 ? '9+' : unreadCount}
                   </span>
@@ -210,8 +210,8 @@ export default function Sidebar({ isOpen = false, onClose }) {
                 {item.name === 'المراسلة' && totalUnreadCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-sky-500 text-white' 
-                      : 'bg-sky-400 text-white'
+                      ? 'bg-primary text-light' 
+                      : 'bg-accent text-light'
                   } shadow-sm`}>
                     {totalUnreadCount > 9 ? '9+' : totalUnreadCount}
                   </span>
@@ -219,8 +219,8 @@ export default function Sidebar({ isOpen = false, onClose }) {
                 {item.name === 'الحالات الجديدة' && newCasesCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-orange-500 text-white' 
-                      : 'bg-orange-400 text-white'
+                      ? 'bg-orange-500 text-light' 
+                      : 'bg-orange-400 text-light'
                   } shadow-sm`}>
                     {newCasesCount > 9 ? '9+' : newCasesCount}
                   </span>
@@ -228,8 +228,8 @@ export default function Sidebar({ isOpen = false, onClose }) {
                 {item.name === 'طلبات الإسناد' && pendingAssignmentsCount > 0 && (
                   <span className={`absolute left-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold ${
                     isActive 
-                      ? 'bg-yellow-500 text-white' 
-                      : 'bg-yellow-400 text-white'
+                      ? 'bg-warning-500 text-light' 
+                      : 'bg-warning-400 text-light'
                   } shadow-sm`}>
                     {pendingAssignmentsCount > 9 ? '9+' : pendingAssignmentsCount}
                   </span>
